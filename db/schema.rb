@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_19_224916) do
+ActiveRecord::Schema.define(version: 2021_08_19_225728) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,20 @@ ActiveRecord::Schema.define(version: 2021_08_19_224916) do
     t.bigint "parent_id"
     t.index ["name"], name: "index_games_on_name", unique: true
     t.index ["parent_id"], name: "index_games_on_parent_id"
+  end
+
+  create_table "games_genres", id: false, force: :cascade do |t|
+    t.bigint "game_id", null: false
+    t.bigint "genre_id", null: false
+    t.index ["game_id", "genre_id"], name: "index_games_genres_on_game_id_and_genre_id"
+    t.index ["genre_id", "game_id"], name: "index_games_genres_on_genre_id_and_game_id"
+  end
+
+  create_table "games_platfoms", id: false, force: :cascade do |t|
+    t.bigint "game_id", null: false
+    t.bigint "platfom_id", null: false
+    t.index ["game_id", "platfom_id"], name: "index_games_platfoms_on_game_id_and_platfom_id"
+    t.index ["platfom_id", "game_id"], name: "index_games_platfoms_on_platfom_id_and_game_id"
   end
 
   create_table "genres", force: :cascade do |t|
