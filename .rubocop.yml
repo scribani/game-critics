@@ -1,0 +1,56 @@
+require: rubocop-rails
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - "db/**/*"
+    - "script/**/*"
+    - "bin/**/*"
+    - "node_modules/**/*"
+
+Style/StringLiterals:
+  Description: "Checks if uses of quotes match the configured preference."
+  Enabled: true
+  EnforcedStyle: double_quotes
+
+Style/FrozenStringLiteralComment:
+  Description: >-
+    Add the frozen_string_literal comment to the top of files
+    to help transition to frozen string literals by default.
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 20
+
+# Style/ClassVars:
+#   Enabled: false
+
+Metrics/AbcSize:
+  Max: 25
+
+Layout/LineLength:
+  Max: 100
+  IgnoredPatterns: ['\s*#']
+
+Metrics/BlockLength:
+  Exclude:
+    - config/**/*
+    - spec/**/*
+
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - spec/**/*
+
+Style/Documentation:
+  Description: "Document classes and non-namespace modules."
+  Enabled: false
+  VersionAdded: "0.9"
+  Exclude:
+    - "spec/**/*"
+    - "test/**/*"
+
+Style/MutableConstant:
+  Enabled: false
+
+Rails/HasAndBelongsToMany:
+  Enabled: false
