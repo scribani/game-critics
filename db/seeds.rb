@@ -18,12 +18,13 @@ Company.destroy_all
 # Create random users using Faker
 puts "Seeding users..."
 # Create 1 admin
-User.create(username: "admin", email: "admin@mail.com", role: "admin")
+User.create(username: "admin", email: "admin@mail.com", password: "123456", role: "admin")
 # Create 10 contributors
 10.times do
   contributor_data = {
     username: Faker::Internet.unique.username,
     email: Faker::Internet.unique.safe_email,
+    password: Faker::Internet.password(min_length: 6)
   }
   new_user = User.create(contributor_data)
   puts "User not created.\nErrors: #{new_user.errors.full_messages}" unless new_user.save
