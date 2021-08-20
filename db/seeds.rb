@@ -9,11 +9,16 @@ require 'faker'
 require 'json'
 
 puts "Start seeding"
+User.destroy_all
+Game.destroy_all
+Genre.destroy_all
+Platform.destroy_all
+Company.destroy_all
+
 # Create random users using Faker
 puts "Seeding users..."
 # Create 1 admin
 User.create(username: "admin", email: "admin@mail.com", role: "admin")
-
 # Create 10 contributors
 10.times do
   contributor_data = {
@@ -91,5 +96,24 @@ games.each do |game|
   end
 
   puts "Game not created.\nErrors: #{new_game.errors.full_messages}" unless new_game.save
+end
+
+# Create random critics using Faker
+puts "Seeding critics..."
+# For each game and company, create between 1 and 3 critics from random users
+users = User.all
+collection = Games.all + Company.all
+collection.each do |item|
+  rand(1..3).times do
+    critic_data = {
+      title: Faker::Lorem.sentence,
+      body: Faker::Lorem.paragraph,
+      user: users.sample,
+      criticable: item
+    }
+    new_critic = Critic.new(critic_data)
+
+    puts "Critic not created.\nErrors: #{new_critic.errors.full_messages}" unless new_critic.save
+  end
 end
 puts "Finish seeding"
