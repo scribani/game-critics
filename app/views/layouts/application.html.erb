@@ -32,7 +32,7 @@
             <li class="menu--item"><a href="#0">Edit Profile</a></li>
             <li class="menu--item"><a href="games">Games</li>
             <li class="menu--item"><a href="companies">Companies</a></li>
-            <li class="menu--item btn btn--secondary btn--small"><a href="#0">Log out</a></li>
+            <li class="menu--item btn btn--secondary btn--small"><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
           </ul>
         </nav>
       </div>
