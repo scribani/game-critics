@@ -7,6 +7,7 @@ class CompaniesController < ApplicationController
   # GET /companies/:id
   def show
     @company = Company.find(params[:id])
+    render :show
   end
 
   # GET /companies/new
@@ -44,6 +45,6 @@ class CompaniesController < ApplicationController
   private
 
   def company_params
-    params.require(:company).permit(:name, :description, :start_date, :country)
+    params.require(:company).permit(:name, :description, :start_date, :country, :cover)
   end
 end
