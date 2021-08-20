@@ -47,9 +47,12 @@ class GamesController < ApplicationController
     end
   end
 
-
   # DELETE /games/:id
   def destroy
+    pp "----------------------"
+    pp params[:id]
+    pp "----------------------"
+
     game = Game.find(params[:id])
     game.destroy
     redirect_to game_path
