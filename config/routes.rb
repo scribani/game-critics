@@ -12,7 +12,10 @@ Rails.application.routes.draw do
   resources :involved_companies
   resources :genres
   resources :platforms
-  resources :games
+
+  resources :games do
+    resources :critics
+  end
   resources :companies
   resources :users
 end

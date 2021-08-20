@@ -9,7 +9,6 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
     <header>
       <div class="header--container">
@@ -29,7 +28,7 @@
           </label>
           <ul class="menu--content .content--sm">
             <li class="menu--item"><a href="#0">Welcome admin!</a></li>
-            <li class="menu--item"><a href="#0">Edit Profile</a></li>
+            <li class="menu--item"><a href="#0"><%= link_to 'Edit Profile', edit_user_registration_path %></a></li>
             <li class="menu--item"><a href="games">Games</li>
             <li class="menu--item"><a href="companies">Companies</a></li>
             <li class="menu--item btn btn--secondary btn--small"><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
@@ -37,35 +36,44 @@
         </nav>
       </div>
     </header>
-
-    <div class="container">
+    <body>
+   <p class="notice"><%= notice %></p>
+   <p class="alert"><%= alert %></p>
+   <% if user_signed_in? %>
+     <%= current_user.email %>
+   <% else %>
+     <%= link_to 'Log in', new_user_session_path %>
+     <%= link_to 'Sign up', new_user_registration_path %>
+   <% end %>
+     <div class="container">
       <%= yield %>
     </div>
-
+    </body>
     <footer>
       <div class="footer--container">
         <p class="footer--txt content--sm">© 2021 - Codeable Critics</p>
         <p class="content--sm">Build with <span class="footer--heart">♥</span> by</p>
 
         <div class="footer--social-container content--xs">
-          <div class="footer--social-name"> 
+          <div class="footer--social-name">
             <%= image_tag "linkdin-vector.svg"%>
             <p> Ever Ponce</p>
           </div>
-          <div class="footer--social-name"> 
+          <div class="footer--social-name">
             <%= image_tag "linkdin-vector.svg" %>
             <p> Mindy León</p>
           </div>
-          <div class="footer--social-name"> 
+          <div class="footer--social-name">
             <%= image_tag "linkdin-vector.svg" %>
             <p> Andrés Scribani</p>
           </div>
-          <div class="footer--social-name"> 
+          <div class="footer--social-name">
             <%= image_tag "linkdin-vector.svg" %>
             <p> Ana Isabel León</p>
-          </div> 
+          </div>
         </div>
       </div>
     </footer>
+
   </body>
 </html>
