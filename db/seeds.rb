@@ -20,6 +20,15 @@ User.create(username: "admin", email: "admin@mail.com", role: "admin")
     username: Faker::Internet.unique.username,
     email: Faker::Internet.unique.safe_email,
   }
-  User.create(contributor_data)
+  new_user = User.create(contributor_data)
+  puts "User not created.\nErrors: #{new_user.errors.full_messages}" unless new_user.save
+end
+
+# Create all the companies from JSON file
+puts "Seeding companies..."
+companies = JSON.parse(File.read("data/companies.json"), symbolize_names: true)
+companies.each do |company_data|
+  new_company = Company.new(company_data)
+  puts "Company not created.\nErrors: #{new_company.errors.full_messages}" unless new_company.save
 end
 puts "Finish seeding"
