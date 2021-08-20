@@ -36,8 +36,17 @@
         </nav>
       </div>
     </header>
-
-    <div class="container">
+   <p class="notice"><%= notice %></p>
+   <p class="alert"><%= alert %></p>
+   <% if user_signed_in? %>
+     <%= current_user.email %>
+     <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
+     <%= link_to 'Edit Profile', edit_user_registration_path %>
+   <% else %>
+     <%= link_to 'Log in', new_user_session_path %>
+     <%= link_to 'Sign up', new_user_registration_path %>
+   <% end %>
+     <div class="container">
       <%= yield %>
     </div>
 
@@ -47,24 +56,25 @@
         <p class="content--sm">Build with <span class="footer--heart">♥</span> by</p>
 
         <div class="footer--social-container content--xs">
-          <div class="footer--social-name"> 
+          <div class="footer--social-name">
             <%= image_tag "linkdin-vector.svg"%>
             <p> Ever Ponce</p>
           </div>
-          <div class="footer--social-name"> 
+          <div class="footer--social-name">
             <%= image_tag "linkdin-vector.svg" %>
             <p> Mindy León</p>
           </div>
-          <div class="footer--social-name"> 
+          <div class="footer--social-name">
             <%= image_tag "linkdin-vector.svg" %>
             <p> Andrés Scribani</p>
           </div>
-          <div class="footer--social-name"> 
+          <div class="footer--social-name">
             <%= image_tag "linkdin-vector.svg" %>
             <p> Ana Isabel León</p>
-          </div> 
+          </div>
         </div>
       </div>
     </footer>
+
   </body>
 </html>

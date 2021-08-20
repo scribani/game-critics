@@ -11,6 +11,7 @@ class User < ApplicationRecord
   # has_many :authentications, dependent: :destroy
 
   # Validations
+
   validates :email, uniqueness: true, presence: true
   validates :username, uniqueness: true, presence: true
 
