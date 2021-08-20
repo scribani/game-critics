@@ -6,21 +6,35 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Game.create!(name: 'Mario bross', 
-            summary: "A third person shooter/stealth/survival hybrid, in which twenty years after the outbreak of a par...",
-            release_date: "2020-12-3",
-            category: "main_game",
-            rating: 94.0)
+ga1 = Game.create(name: "game1",
+              summary: "Este es el game 1",
+              category: 0,
+              release_date: '2010-02-05',
+              rating: 5.9)
+ga1.cover.attach(io: File.open('app/assets/images/games/card_barbie.jpg'), filename: 'card.jpg')
+ga1.save
 
-Game.create!(name: 'Bordelands 3', 
-             summary: "A third person shooter/stealth/survival hybrid, in which twenty years after the outbreak of a par...",
-             release_date: "2020-12-3",
-             category: "main_game",
-             rating: 94.0)
+ga2 = Game.create(name: "game2",
+  summary: "game 2",
+  category: "main_game",
+  release_date: '2010-02-03',
+  rating: 5.9)
+ga2.cover.attach(io: File.open('app/assets/images/games/jirafe.jpg'), filename: 'card2.jpg')
+ga2.save
 
-Game.create!(name: 'Tom RAider', 
-             summary: "A third person shooter/stealth/survival hybrid, in which twenty years after the outbreak of a par...",
-             release_date: "2020-12-3",
-             category: "main_game",
-             rating: 94.0)
+ga3 = Game.create(name: "game3",
+  summary: "game 3",
+  category: "main_game",
+  release_date: '2010-02-03',
+  rating: 5.9)
+ga3.cover.attach(io: File.open('app/assets/images/games/jirafe.jpg'), filename: 'card2.jpg')
+ga3.save
 
+ga4 = Game.new(name: "game4",
+  summary: "game 4",
+  category: "main_game",
+  release_date: '2010-02-03',
+  rating: 5.9,
+  parent_id: 1)
+ga4.cover.attach(io: File.open('app/assets/images/games/jirafe.jpg'), filename: 'card2.jpg')
+ga4.save

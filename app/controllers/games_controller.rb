@@ -9,6 +9,16 @@ class GamesController < ApplicationController
     @game = Game.new
     @main_games = Game.main_game
   end
+  # GET /games/:id
+  def show
+    @game = Game.find(params[:id])
+    @genres = @game.genres.map {|genre| genre.name}
+    # @platforms = @game.platforms.map {|platform| platform.name}
+    # @developers = @game.involved_companies.where(developer: true).map {|ic| ic.company}
+    # @publishers = @game.involved_companies.where(publisher: true).map {|ic| ic.company}
+    # @critics = @game.critics
+    # render json: game
+  end
 
   # POST /games
   def create
@@ -42,11 +52,11 @@ class GamesController < ApplicationController
   def destroy
     game = Game.find(params[:id])
     game.destroy
-    redirect_to games_path
+    redirect_to game_path
   end
 
   def game_params
-    params.require(:game).permit(:name, :summary, :release_date, :category, :rating, :parent_id)
+    params.require(:game).permit(:name, :summary, :release_date, :category, :rating, :parent_id, :cover)
   end
 
 end
