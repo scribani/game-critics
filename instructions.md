@@ -8,7 +8,7 @@
 
 3. Run `docker compose up`. This will give you your db_hots (critics-rc_xxxx_db_1)
 
-4. On a different window run `docker compose exec client bash`.
+4. On a different window run `c4-critics-rc-w10-team1_db_1`.
 
 5. Inside the bash terminal run the `bootstrap` command.
 
@@ -16,9 +16,7 @@
 
 7. Install all the gems with `bundle install`
 
-8. Execute the command `yarn install --check-files`
-
-9. Initialize your DB: `rails db:create db:migrate db:seed`
+8. Initialize your DB: `rails db:create db:migrate db:seed`
 
 ## About
 
