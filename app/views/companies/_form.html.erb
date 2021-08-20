@@ -1,1 +1,49 @@
-<h2>Company Form</h2>
+<%= form_with model: company do |form| %>
+
+  <div>
+    <div>
+      <%= form.label :name %>
+    </div>
+    <div>
+      <%= form.text_field :name, placeholder: "Company SA" %>
+    </div>
+  </div>
+
+  <div>
+    <div>
+      <%= form.label :description %>
+    </div>
+    <div>
+      <%= form.text_area :description, placeholder: "About the company..." %>
+    </div>
+  </div>
+
+  <div>
+    <div>
+      <%= form.label :start_date %>
+    </div>
+    <div>
+      <%= form.date_field :start_date, placeholder: "dd/mm/yyyy" %>
+    </div>
+  </div>
+
+  <div>
+    <div>
+      <%= form.label :country %>
+    </div>
+    <div>
+      <%= form.text_field :country, placeholder: "Somewhere" %>
+    </div>
+  </div>
+
+  <div>
+    <div>
+      <%= form.label :cover %>
+    </div>
+    <div>
+      <%= form.file_field :cover %>
+    </div>
+  </div>
+
+  <%= form.submit %>
+<% end %>
