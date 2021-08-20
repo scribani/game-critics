@@ -31,4 +31,12 @@ companies.each do |company_data|
   new_company = Company.new(company_data)
   puts "Company not created.\nErrors: #{new_company.errors.full_messages}" unless new_company.save
 end
+
+# Create all the platforms from JSON file
+puts "Seeding platforms..."
+platforms = JSON.parse(File.read("data/platforms.json"), symbolize_names: true)
+platforms.each do |platform_data|
+  new_platform = Platform.new(platform_data)
+  puts "Platform not created.\nErrors: #{new_platform.errors.full_messages}" unless new_platform.save
+end
 puts "Finish seeding"
