@@ -73,8 +73,8 @@
       { "name": "St. GIGA", "developer": false, "publisher": true }
     ],
     "cover": {
-      "io_path": "public/images/games/the_legend_of_zelda:_a_link_to_the_past.png",
-      "filename": "the_legend_of_zelda:_a_link_to_the_past.png"
+      "io_path": "public/images/games/the_legend_of_zelda_a_link_to_the_past.png",
+      "filename": "the_legend_of_zelda_a_link_to_the_past.png"
     }
   },
   {
@@ -142,8 +142,8 @@
       { "name": "Nintendo EPD", "developer": true, "publisher": false }
     ],
     "cover": {
-      "io_path": "public/images/games/the_legend_of_zelda:_breath_of_the_wild.png",
-      "filename": "the_legend_of_zelda:_breath_of_the_wild.png"
+      "io_path": "public/images/games/the_legend_of_zelda_breath_of_the_wild.png",
+      "filename": "the_legend_of_zelda_breath_of_the_wild.png"
     }
   },
   {
@@ -218,8 +218,8 @@
       { "name": "CD Projekt RED", "developer": true, "publisher": false }
     ],
     "cover": {
-      "io_path": "public/images/games/the_witcher_3:_wild_hunt.png",
-      "filename": "the_witcher_3:_wild_hunt.png"
+      "io_path": "public/images/games/the_witcher_3_wild_hunt.png",
+      "filename": "the_witcher_3_wild_hunt.png"
     }
   },
   {
@@ -352,8 +352,8 @@
       }
     ],
     "cover": {
-      "io_path": "public/images/games/uncharted_4:_a_thief's_end.png",
-      "filename": "uncharted_4:_a_thief's_end.png"
+      "io_path": "public/images/games/uncharted_4_a_thiefs_end.png",
+      "filename": "uncharted_4_a_thiefs_end.png"
     }
   },
   {
@@ -400,8 +400,8 @@
       }
     ],
     "cover": {
-      "io_path": "public/images/games/uncharted_2:_among_thieves.png",
-      "filename": "uncharted_2:_among_thieves.png"
+      "io_path": "public/images/games/uncharted_2_among_thieves.png",
+      "filename": "uncharted_2_among_thieves.png"
     }
   },
   {
@@ -424,8 +424,8 @@
       { "name": "Nintendo EAD", "developer": true, "publisher": false }
     ],
     "cover": {
-      "io_path": "public/images/games/the_legend_of_zelda:_ocarina_of_time.png",
-      "filename": "the_legend_of_zelda:_ocarina_of_time.png"
+      "io_path": "public/images/games/the_legend_of_zelda_ocarina_of_time.png",
+      "filename": "the_legend_of_zelda_ocarina_of_time.png"
     }
   },
   {
@@ -450,8 +450,8 @@
       { "name": "Aspyr Media", "developer": false, "publisher": true }
     ],
     "cover": {
-      "io_path": "public/images/games/star_wars:_knights_of_the_old_republic.png",
-      "filename": "star_wars:_knights_of_the_old_republic.png"
+      "io_path": "public/images/games/star_wars_knights_of_the_old_republic.png",
+      "filename": "star_wars_knights_of_the_old_republic.png"
     }
   },
   {
@@ -506,8 +506,8 @@
       { "name": "Bethesda Softworks", "developer": false, "publisher": true }
     ],
     "cover": {
-      "io_path": "public/images/games/the_elder_scrolls_v:_skyrim.png",
-      "filename": "the_elder_scrolls_v:_skyrim.png"
+      "io_path": "public/images/games/the_elder_scrolls_v_skyrim.png",
+      "filename": "the_elder_scrolls_v_skyrim.png"
     }
   },
   {
@@ -560,8 +560,8 @@
       { "name": "Take-Two Interactive", "developer": false, "publisher": true }
     ],
     "cover": {
-      "io_path": "public/images/games/grand_theft_auto:_san_andreas.png",
-      "filename": "grand_theft_auto:_san_andreas.png"
+      "io_path": "public/images/games/grand_theft_auto_san_andreas.png",
+      "filename": "grand_theft_auto_san_andreas.png"
     }
   },
   {
@@ -630,8 +630,8 @@
       }
     ],
     "cover": {
-      "io_path": "public/images/games/the_last_of_us:_left_behind.png",
-      "filename": "the_last_of_us:_left_behind.png"
+      "io_path": "public/images/games/the_last_of_us_left_behind.png",
+      "filename": "the_last_of_us_left_behind.png"
     }
   },
   {
@@ -652,8 +652,8 @@
       { "name": "CD Projekt RED", "developer": true, "publisher": true }
     ],
     "cover": {
-      "io_path": "public/images/games/the_witcher_3:_wild_hunt_-_hearts_of_stone.png",
-      "filename": "the_witcher_3:_wild_hunt_-_hearts_of_stone.png"
+      "io_path": "public/images/games/the_witcher_3_wild_hunt_hearts_of_stone.png",
+      "filename": "the_witcher_3_wild_hunt_hearts_of_stone.png"
     }
   },
   {
@@ -673,8 +673,8 @@
       { "name": "CD Projekt RED", "developer": true, "publisher": false }
     ],
     "cover": {
-      "io_path": "public/images/games/the_witcher_3:_wild_hunt_-_blood_and_wine.png",
-      "filename": "the_witcher_3:_wild_hunt_-_blood_and_wine.png"
+      "io_path": "public/images/games/the_witcher_3_wild_hunt_blood_and_wine.png",
+      "filename": "the_witcher_3_wild_hunt_blood_and_wine.png"
     }
   },
   {
@@ -695,8 +695,8 @@
       }
     ],
     "cover": {
-      "io_path": "public/images/games/bloodborne:_the_old_hunters.png",
-      "filename": "bloodborne:_the_old_hunters.png"
+      "io_path": "public/images/games/bloodborne_the_old_hunters.png",
+      "filename": "bloodborne_the_old_hunters.png"
     }
   },
   {
@@ -715,8 +715,8 @@
       { "name": "Nintendo", "developer": true, "publisher": true }
     ],
     "cover": {
-      "io_path": "public/images/games/the_legend_of_zelda:_breath_of_the_wild_-_expansion_pass.png",
-      "filename": "the_legend_of_zelda:_breath_of_the_wild_-_expansion_pass.png"
+      "io_path": "public/images/games/the_legend_of_zelda_breath_of_the_wild_expansion_pass.png",
+      "filename": "the_legend_of_zelda_breath_of_the_wild_expansion_pass.png"
     }
   },
   {
@@ -734,8 +734,8 @@
       { "name": "Hylian Modding", "developer": false, "publisher": true }
     ],
     "cover": {
-      "io_path": "public/images/games/zelda_64:_dawn_&_dusk.png",
-      "filename": "zelda_64:_dawn_&_dusk.png"
+      "io_path": "public/images/games/zelda_64_dawn_&_dusk.png",
+      "filename": "zelda_64_dawn_&_dusk.png"
     }
   }
 ]

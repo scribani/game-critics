@@ -73,6 +73,8 @@ games.each do |game|
   io_path = game[:cover][:io_path]
   filename = game[:cover][:filename]
   new_game.cover.attach(io: File.open(io_path), filename: filename)
+  puts "Game not created.\nErrors: #{new_game.errors.full_messages}" unless new_game.save
+  new_game = Game.last
 
   game[:genres].each do |genre_name|
     genre = Genre.find_by(name: genre_name)
@@ -95,19 +97,17 @@ games.each do |game|
     new_involved_company = InvolvedCompany.new(involved_company_data)
     puts "Involved company not created.\nErrors: #{new_involved_company.errors.full_messages}" unless new_involved_company.save
   end
-
-  puts "Game not created.\nErrors: #{new_game.errors.full_messages}" unless new_game.save
 end
 
 # Create random critics using Faker
 puts "Seeding critics..."
 # For each game and company, create between 1 and 3 critics from random users
 users = User.all
-collection = Games.all + Company.all
+collection = Game.all + Company.all
 collection.each do |item|
   rand(1..3).times do
     critic_data = {
-      title: Faker::Lorem.sentence,
+      title: Faker::Lorem.sentence(word_count: 1, random_words_to_add: 3),
       body: Faker::Lorem.paragraph,
       user: users.sample,
       criticable: item

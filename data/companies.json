@@ -45,8 +45,8 @@
     "country": null,
     "start_date": null,
     "cover": {
-      "io_path": "public/images/companies/st._giga.png",
-      "filename": "st._giga.png"
+      "io_path": "public/images/companies/st_giga.png",
+      "filename": "st_giga.png"
     }
   },
   {
@@ -55,8 +55,8 @@
     "country": "Japan",
     "start_date": "1986-12-31",
     "cover": {
-      "io_path": "public/images/companies/intelligent_systems_co.,_ltd..png",
-      "filename": "intelligent_systems_co.,_ltd..png"
+      "io_path": "public/images/companies/intelligent_systems_co.png",
+      "filename": "intelligent_systems_co.png"
     }
   },
   {
@@ -85,8 +85,8 @@
     "country": "Japan",
     "start_date": "1993-11-16",
     "cover": {
-      "io_path": "public/images/companies/sony_computer_entertainment,_inc._(scei).png",
-      "filename": "sony_computer_entertainment,_inc._(scei).png"
+      "io_path": "public/images/companies/scei.png",
+      "filename": "scei.png"
     }
   },
   {
@@ -185,8 +185,8 @@
     "country": "Canada",
     "start_date": "1995-02-01",
     "cover": {
-      "io_path": "public/images/companies/bioware_edmonton.png",
-      "filename": "bioware_edmonton.png"
+      "io_path": "public/images/companies/bioware.png",
+      "filename": "bioware.png"
     }
   },
   {
@@ -195,8 +195,8 @@
     "country": "Canada",
     "start_date": "2009-03-01",
     "cover": {
-      "io_path": "public/images/companies/bioware_montreal.png",
-      "filename": "bioware_montreal.png"
+      "io_path": "public/images/companies/bioware.png",
+      "filename": "bioware.png"
     }
   },
   {
@@ -225,8 +225,8 @@
     "country": "Poland",
     "start_date": "1994-12-31",
     "cover": {
-      "io_path": "public/images/companies/cdp.pl.png",
-      "filename": "cdp.pl.png"
+      "io_path": "public/images/companies/cdp_pl.png",
+      "filename": "cdp_pl.png"
     }
   },
   {
@@ -275,8 +275,8 @@
     "country": "Japan",
     "start_date": "2000-06-30",
     "cover": {
-      "io_path": "public/images/companies/1-up_studio.png",
-      "filename": "1-up_studio.png"
+      "io_path": "public/images/companies/1_up_studio.png",
+      "filename": "1_up_studio.png"
     }
   },
   {
@@ -305,8 +305,8 @@
     "country": "United States of America",
     "start_date": "1993-12-31",
     "cover": {
-      "io_path": "public/images/companies/take-two_interactive.png",
-      "filename": "take-two_interactive.png"
+      "io_path": "public/images/companies/take_two_interactive.png",
+      "filename": "take_two_interactive.png"
     }
   },
   {
@@ -425,8 +425,8 @@
     "country": null,
     "start_date": null,
     "cover": {
-      "io_path": "public/images/companies/captain_seedy-eye.png",
-      "filename": "captain_seedy-eye.png"
+      "io_path": "public/images/companies/captain_seedy_eye.png",
+      "filename": "captain_seedy_eye.png"
     }
   },
   {
