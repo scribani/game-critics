@@ -27,8 +27,14 @@ end
 # Create all the companies from JSON file
 puts "Seeding companies..."
 companies = JSON.parse(File.read("data/companies.json"), symbolize_names: true)
-companies.each do |company_data|
+companies.each do |company|
+  company_data = company.slice(:name, :description, :start_date, :country)
   new_company = Company.new(company_data)
+
+  io_path = company[:cover][:io_path]
+  filename = company[:cover][:filename]
+  new_company.cover.attach(io: File.open(io_path), filename: filename)
+
   puts "Company not created.\nErrors: #{new_company.errors.full_messages}" unless new_company.save
 end
 
@@ -46,5 +52,44 @@ genres = JSON.parse(File.read("data/genres.json"), symbolize_names: true)
 genres.each do |genre|
   new_genre = Genre.new(name: genre)
   puts "Genre not created.\nErrors: #{new_genre.errors.full_messages}" unless new_genre.save
+end
+
+# Create all the games from JSON file
+puts "Seeding games..."
+games = JSON.parse(File.read("data/games.json"), symbolize_names: true)
+games.each do |game|
+  game_data = game.slice(:name, :summary, :release_date, :category, :rating)
+  new_game = Game.create(game_data)
+
+  parent = Game.find_by(name: game[:parent])
+  new_game.parent = parent
+
+  io_path = game[:cover][:io_path]
+  filename = game[:cover][:filename]
+  new_game.cover.attach(io: File.open(io_path), filename: filename)
+
+  game[:genres].each do |genre_name|
+    genre = Genre.find_by(name: genre_name)
+    new_game.genres << genre
+  end
+
+  game[:platforms].each do |platform_data|
+    platform_name = platform_data[:name]
+    platform = Platform.find_by(name: platform_name)
+    new_game.platforms << platform
+  end
+
+  game[:involved_companies].each do |involved_company|
+    involved_company_data = {
+      game: new_game,
+      company: Company.find_by(name: involved_company[:name]),
+      developer: involved_company[:developer],
+      publisher: involved_company[:publisher]
+    }
+    new_involved_company = InvolvedCompany.new(involved_company_data)
+    puts "Involved company not created.\nErrors: #{new_involved_company.errors.full_messages}" unless new_involved_company.save
+  end
+
+  puts "Game not created.\nErrors: #{new_game.errors.full_messages}" unless new_game.save
 end
 puts "Finish seeding"
