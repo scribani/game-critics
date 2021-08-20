@@ -39,4 +39,12 @@ platforms.each do |platform_data|
   new_platform = Platform.new(platform_data)
   puts "Platform not created.\nErrors: #{new_platform.errors.full_messages}" unless new_platform.save
 end
+
+# Create all the genres from JSON file
+puts "Seeding genres..."
+genres = JSON.parse(File.read("data/genres.json"), symbolize_names: true)
+genres.each do |genre|
+  new_genre = Genre.new(name: genre)
+  puts "Genre not created.\nErrors: #{new_genre.errors.full_messages}" unless new_genre.save
+end
 puts "Finish seeding"
