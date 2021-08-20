@@ -1,6 +1,6 @@
 class Game < ApplicationRecord
   # Enums
-  # enum category: { main_game: 0, expansion: 1 }
+  enum category: { main_game: 0, expansion: 1 }
 
   # Associations
   has_many :companies, through: :involved_companies
