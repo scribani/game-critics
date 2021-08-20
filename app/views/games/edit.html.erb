@@ -1,9 +1,19 @@
-<h1>New game</h1>
+<h1>Edit game</h1>
 
+<% if @game.errors.size.positive? %>
+  <div>
+    <ul>
+      <% @game.errors.full_messages.each do |message| %>
+        <li><%= message %> </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 <%= form_with model: @game do |form| %>
   <div>
     <%= form.label :name %>
     <%= form.text_field :name %>
+    
   </div>
   <div>
     <%= form.label :summary %>
@@ -13,7 +23,7 @@
     <%= form.label :release_date %>
     <%= form.date_field :release_date %>
   </div>
-  <div>
+    <div>
     <%= form.label :rating %>
     <%= form.number_field :rating, in: 0.0..100.0, step: 0.1 %>
   </div>
@@ -21,16 +31,17 @@
     <%= form.label :category %>
     <%= form.select :category, [["Main game", "main_game"], ["Expansion", "expansion"]] %>
   </div>
+
   <div>
     <%= form.label :parent_id %>
-    <%= form.collection_select :parent_id, @main_games, :id, :name, prompt: "NO Parent" %>
+
+    <%# <%= form.collection_select :parent_id, @main_games, :id, :name, prompt: "No Parent" %> %>
   </div>
-    <div>
+  <div>
     <%= form.label :cover%>
     <%= form.file_field :cover %>
   </div>
 
-  <%= form.submit "Create Game" %>
+  <%= form.submit "Update Game" %>
 <% end %>
-
-<%= link_to 'Back', games_path %>
+<%= link_to "Back to games", games_path %>
