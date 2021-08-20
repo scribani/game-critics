@@ -1,0 +1,13 @@
+.menu {
+
+}
+
+.menu--content {
+  border: 2px solid var(--gray-100);
+  padding: 16px 0px;
+}
+
+.menu--item {
+  text-decoration: none;
+  list-style: none;
+}

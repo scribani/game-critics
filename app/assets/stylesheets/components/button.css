@@ -21,9 +21,11 @@
   color: white;
   background-color: var(--primary-300);
 }
+
 .btn--primary:hover {
   background-color: var(--primary-400);
 }
+
 .btn--primary:focus {
   outline: 2px solid var(--primary-300);
 }
@@ -32,9 +34,15 @@
   color: white;
   background-color: var(--secondary-300);
 }
+
+.btn--secondary a {
+  color: white;
+}
+
 .btn--secondary:hover {
   background-color: var(--secondary-400);
 }
+
 .btn--secondary:focus {
   outline: 2px solid var(--secondary-300);
 }
