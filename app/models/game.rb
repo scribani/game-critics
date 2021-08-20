@@ -1,6 +1,6 @@
 class Game < ApplicationRecord
   # Enums
-  enum category: { main_game: 0, expansion: 1 }
+  # enum category: { main_game: 0, expansion: 1 }
 
   # Associations
   has_many :companies, through: :involved_companies
@@ -17,7 +17,9 @@ class Game < ApplicationRecord
   # Validations
   validates :name, uniqueness: true, presence: true
   validates :category, presence: true
-  validates :rating, default: 0, numericality: {
+
+  # validates :rating, default: 0, numericality: {
+  validates :rating, numericality: {
     greater_than_or_equal_to: 0,
     less_than_or_equal_to: 100
   }

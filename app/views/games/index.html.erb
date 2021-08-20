@@ -1,0 +1,20 @@
+<h1> Games </h1>
+
+<%= link_to "New Game", new_game_path %>
+<div>
+  <% @games.each do |game| %>
+    <div>
+      <%= game.name %>
+      <%= game.release_date %>
+      <%= game.rating %>
+    </div>
+    <div>
+      <%= game.summary %>
+    </div>
+    <div>
+      <%= link_to "show", game_path(game) %>
+      <%= link_to "edit", edit_game_path(game) %>
+      <%= link_to "delete", game_path(game), method: :delete %> 
+    </div>
+  <% end %>
+</div>
