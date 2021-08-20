@@ -1,0 +1,25 @@
+.gray-300 {
+  color: var(--gray-300);
+}
+
+.card {
+  max-width: 328px;
+  display: flex;
+  background-color: white;
+}
+
+.card--img {
+  /* width: 100%; */
+  width: 120px;
+  height: 160px;
+}
+
+.card--detail-container {
+  padding: 8px;
+}
+
+.card--icons-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 10.62px;
+}
