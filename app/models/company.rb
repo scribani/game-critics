@@ -7,4 +7,5 @@ class Company < ApplicationRecord
 
   # Validations
   validates :name, presence: true, uniqueness: true
+  validates :cover, presence: { message: "can't be blank" }
 end

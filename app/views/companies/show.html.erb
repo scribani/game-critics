@@ -1,1 +1,23 @@
-<h2>Show Company</h2>
+<div>
+  <div>
+    <%= image_tag(@company.cover) if @company.cover.attached? %>
+  </div>
+  <p><%= @company.name%></p>
+  <p><%= @company.start_date %> - <%= @company.country %></p>
+</div>
+
+<nav>
+  <ul>
+    <li><a href=" ">Company Details</li>
+    <li><a href=" ">Critics ()</a></li>
+  </ul>
+</nav>
+
+<div>
+  <p><%= @company.description%></p>
+  <div>
+    <h2> Games (game.count?) </h2>
+
+</div>
+
+<%= link_to 'back', companies_path %>

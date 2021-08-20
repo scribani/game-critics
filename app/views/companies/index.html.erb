@@ -7,14 +7,16 @@
     <%= link_to company_path(company) do %>
       <div class="card mb-16">
         <div class="card--img">
-          <h3> add cover here </h3>
+          <%= image_tag(company.cover) if company.cover.attached? %>
         </div>
 
         <div class="card--detail-container">
           <div class="card--detail">
             <p class="content--lg"><%= company.name%></p>
             <p class="content--xs mb-10 gray-300" ><%= company.start_date %> - <%= company.country %></p>
-            <p class="content--xs mb-10"><%= company.description %></p>
+            <div class="card--abbrv-description">
+              <p class="content--xs mb-10"><%= company.description %></p>
+            </div>
           </div>
           
           <div class="card--icons-container">
