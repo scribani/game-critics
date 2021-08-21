@@ -18,17 +18,28 @@
           <input checked type="checkbox" id="open" class="menu-checkbox">
           <label for="open" class="menu-open"></label>
           
-          <nav class="menu">
-            <div class="container">
-              <ul class="menu--content .content--sm">
-                <li class="mb-16"><a href="#0">Welcome admin!</a></li>
-                <li class="menu--item mb-16"><%= link_to 'Edit Profile', edit_user_registration_path %></li>
-                <li class="menu--item mb-16"><%= link_to 'Games', games_path %></li>
-                <li class="menu--item mb-16"><%= link_to 'Companies', companies_path %></li>
-                <li class="btn btn--secondary btn--small mb-16"><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
-              </ul>
-            </div>
-          </nav>
+          <% if user_signed_in? %>
+            <nav class="menu">
+              <div class="container">
+                <ul class="menu--content .content--sm">
+                  <li class="mb-16">Welcome <%= current_user.username %>!</li>
+                  <li class="menu--item mb-16"><%= link_to 'Edit Profile', edit_user_registration_path %></li>
+                  <li class="menu--item mb-16"><%= link_to 'Games', games_path %></li>
+                  <li class="menu--item mb-16"><%= link_to 'Companies', companies_path %></li>
+                  <li class="btn btn--secondary btn--small mb-16"><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+                </ul>
+              </div>
+            </nav>
+          <% else %>
+            <nav class="menu">
+              <div class="container">
+                <ul class="menu--content .content--sm">
+                  <li class="mb-16">Sign in to start criting games and companies</li>
+                  <li class="btn btn--primary btn--small mb-16"> <%= link_to 'Sign in', new_user_session_path %> </li>
+                </ul>
+              </div>
+            </nav>
+          <% end %>
         </div>
       </div>
     </header>
