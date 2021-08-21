@@ -13,11 +13,12 @@ class GamesController < ApplicationController
   def show
     @game = Game.find(params[:id])
     @genres = @game.genres.map {|genre| genre.name}
-    # @platforms = @game.platforms.map {|platform| platform.name}
-    # @developers = @game.involved_companies.where(developer: true).map {|ic| ic.company}
-    # @publishers = @game.involved_companies.where(publisher: true).map {|ic| ic.company}
+    @platforms = @game.platforms.map {|platform| platform.name}
+    @developers = @game.involved_companies.where(developer: true).map {|ic| ic.company}
+    @publishers = @game.involved_companies.where(publisher: true).map {|ic| ic.company}
     # @critics = @game.critics
-    # render json: game
+
+    # @game = Game.all
   end
 
   # POST /games
@@ -49,13 +50,18 @@ class GamesController < ApplicationController
 
   # DELETE /games/:id
   def destroy
-    pp "----------------------"
-    pp params[:id]
-    pp "----------------------"
-
     game = Game.find(params[:id])
     game.destroy
     redirect_to game_path
+  end
+
+  # POST /games/:id/add_genre
+  def add_genre
+    game = Game.find(params[:id])
+    genre = Genre.find(params[:genre_id])
+
+    game.genres << genre
+    render json: nil, status: :ok
   end
 
   def game_params

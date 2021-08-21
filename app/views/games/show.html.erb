@@ -1,1 +1,45 @@
-<h1>show game</h1>
+<h2>Game details</h2>
+
+<div>
+  <strong>Name: </strong><span><%= @game.name %></span>
+  <strong>Release date: </strong><span><%= @game.release_date.year %></span>
+  <strong>Rating: </strong><span><%= @game.rating %></span>
+</div>
+
+<h3> Game Details</h3>
+
+<div>
+  <strong>Genres: </strong><span><%= @genres.join(", ") %></span>
+</div>
+<div>
+  <strong>Platforms: </strong><span><%= @platforms.join(", ") %></span>
+</div>
+<div>
+  <strong>Developers: </strong><span><%= @developers.map {|dev| dev.name}.join(", ") %></span>
+</div>
+<div>
+  <strong>Publishers: </strong><span><%= @publishers.map {|pub| pub.name}.join(", ") %></span>
+</div> 
+
+<h2>Add Relations</h2>
+  <%= form_with model: @games do |form| %>
+    <div>
+      <%= form.collection_select :name, (Genre.all - @game.genres), :id, :name, prompt: "Select genre" %>
+      <%= form.submit "Add Genre" %>
+    </div>
+    <div>
+      <%= form.collection_select :name, (Platform.all - @game.platforms), :id, :name, prompt: "Select platform" %>
+      <%= form.submit "Add Platforms" %>
+    </div>
+    <div>
+      <%= form.collection_select :name, (InvolvedCompany.all - @developers.name), :id, :name, prompt: "Select company" %>
+      <%= form.submit "Add Developers" %>
+    </div>
+    <div>
+      <%# <%= form.collection_select :name, (User.all - @game.users), :id, :name, prompt: "Select company" %> %>
+      <%# <%= form.submit "Add Publisher" %> %>
+    </div>
+  <% end %>
+
+
+<%= link_to "Back", games_path %>

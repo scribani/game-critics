@@ -15,6 +15,7 @@ class Game < ApplicationRecord
                         foreign_key: "parent_id",
                         inverse_of: "parent",
                         dependent: :nullify
+  has_one_attached :cover
 
   # Validations
   validates :name, uniqueness: true, presence: true
@@ -23,7 +24,8 @@ class Game < ApplicationRecord
   # validates :rating, default: 0, numericality: {
   validates :rating, numericality: {
     greater_than_or_equal_to: 0,
-    less_than_or_equal_to: 100
+    less_than_or_equal_to: 100,
+    allow_nil: true
   }
   validate :validate_parent
 

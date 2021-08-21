@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_20_061447) do
+ActiveRecord::Schema.define(version: 2021_08_20_163821) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,11 +85,11 @@ ActiveRecord::Schema.define(version: 2021_08_20_061447) do
     t.index ["genre_id", "game_id"], name: "index_games_genres_on_genre_id_and_game_id"
   end
 
-  create_table "games_platfoms", id: false, force: :cascade do |t|
+  create_table "games_platforms", id: false, force: :cascade do |t|
     t.bigint "game_id", null: false
-    t.bigint "platfom_id", null: false
-    t.index ["game_id", "platfom_id"], name: "index_games_platfoms_on_game_id_and_platfom_id"
-    t.index ["platfom_id", "game_id"], name: "index_games_platfoms_on_platfom_id_and_game_id"
+    t.bigint "platform_id", null: false
+    t.index ["game_id", "platform_id"], name: "index_games_platforms_on_game_id_and_platform_id"
+    t.index ["platform_id", "game_id"], name: "index_games_platforms_on_platform_id_and_game_id"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -126,7 +126,12 @@ ActiveRecord::Schema.define(version: 2021_08_20_061447) do
     t.integer "critics_count", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
