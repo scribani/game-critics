@@ -1,0 +1,42 @@
+<% if game.errors.size.positive? %>
+  <div>
+    <ul>
+      <% game.errors.full_messages.each do |message| %>
+        <li><%= message %> </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with model: game do |form| %>
+  <div>
+   <div><%= form.label :name %></div> 
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <div><%= form.label :summary %></div> 
+    <%= form.text_area :summary %>
+  </div>
+  <div>
+    <div><%= form.label :release_date %></div> 
+    <%= form.date_field :release_date %>
+  </div>
+  <div>
+    <div><%= form.label :category %></div> 
+    <%= form.select :category, options_for_select([["Main game", "main_game"], ["Expansion", "expansion"]]) %>
+    </div>
+  <div>
+    <div><%= form.label :rating %></div> 
+    <%= form.number_field :rating, in: 0.0..100.0, step: 0.1 %>
+  </div>
+  <div>
+    <div><%= form.label :parent_id %></div>
+    <%= form.collection_select :parent_id, @main_games, :id, :name, prompt: "Select one game" %>
+  </div>
+  <div>
+    <div><%= form.label :cover %></div> 
+    <p> <%= form.file_field :cover %> </p> 
+  </div>
+
+  <%= form.submit %>
+<% end %>

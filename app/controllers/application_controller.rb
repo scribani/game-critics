@@ -5,10 +5,6 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   after_action :verify_authorized, except: %i[index show]
 
-  def index; end
-
-  def show; end
-
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   def index; end

@@ -22,6 +22,8 @@ class GamesController < ApplicationController
     @genres = @game.genres
     @platforms = @game.platforms
 
+    @critics = @game.critics
+
     show_pub_dev
   end
 

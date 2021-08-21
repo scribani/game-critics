@@ -1,12 +1,3 @@
-<%= render "game-header", game: @game %>
-
-<nav>
-  <ul>
-    <li><%= link_to 'Game Details', game_path(@game) %></li>
-    <li><%= link_to "Critics (#{@critics.size})", critics_path %></li>
-  </ul>
-</nav>
-
 <div>
   <div class = "content--xs text--justify font-inter pb-16"> <%= @game.summary %></div>
 
@@ -86,5 +77,3 @@
     <% end %>
   </div>
 </div>
-
-<%= link_to "Back", games_path %> 
