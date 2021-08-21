@@ -2,12 +2,16 @@ class GamesController < ApplicationController
   # get /games
   def index
     @games = Game.all
+
+    authorize @games
   end
 
   # get /games/new
   def new
     @game = Game.new
     @main_games = Game.main_game
+
+    authorize @games
   end
 
   # GET /games/:id
@@ -25,6 +29,7 @@ class GamesController < ApplicationController
     # @critics = @game.critics
 
     # @game = Game.all
+    authorize @games
   end
 
   # POST /games
@@ -36,11 +41,15 @@ class GamesController < ApplicationController
     else
       render "new"
     end
+
+    authorize @games
   end
 
   # GET /games/:id/edit
   def edit
     @game = Game.find(params[:id])
+
+    authorize @games
   end
 
   # PATCH/PUT /games/:id
@@ -52,6 +61,8 @@ class GamesController < ApplicationController
     else
       render :edit
     end
+
+    authorize @games
   end
 
   # DELETE /games/:id
@@ -59,6 +70,8 @@ class GamesController < ApplicationController
     game = Game.find(params[:id])
     game.destroy
     redirect_to game_path
+
+    authorize @games
   end
 
   # POST /games/:id/add_genre
@@ -67,6 +80,8 @@ class GamesController < ApplicationController
     genre = Genre.find(params[:genre][:id])
 
     game.genres << genre
+
+    authorize @games
   end
 
   # POST /games/:id/add_genre
@@ -75,9 +90,13 @@ class GamesController < ApplicationController
     platform = Platform.find(params[:platform][:id])
 
     game.platforms << platform
+
+    authorize @games
   end
 
   def game_params
     params.require(:game).permit(:name, :summary, :release_date, :category, :rating, :parent_id, :cover)
+
+    authorize @games
   end
 end
