@@ -31,6 +31,9 @@ gem "omniauth-rails_csrf_protection"
 # Pundit authorization
 gem "pundit"
 
+# Kaminari pagination
+gem "kaminari"
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

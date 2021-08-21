@@ -1,7 +1,7 @@
 class GamesController < ApplicationController
   # get /games
   def index
-    @games = Game.all
+    @games = Game.order(:name).page(params[:page]).per(5)
     authorize @games
   end
 
@@ -71,7 +71,7 @@ class GamesController < ApplicationController
     authorize game
 
     game.destroy
-    redirect_to game_path
+    redirect_to root_path
 
   end
 

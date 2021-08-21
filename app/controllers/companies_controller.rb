@@ -1,7 +1,7 @@
 class CompaniesController < ApplicationController
   # GET /companies
   def index
-    @companies = Company.all
+    @companies = Company.order(:name).page(params[:page]).per(5)
     authorize @companies
   end
 
