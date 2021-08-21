@@ -5,8 +5,9 @@ class Game < ApplicationRecord
   # Associations
   has_one_attached :cover
 
-  has_many :companies, through: :involved_companies
   has_many :involved_companies, dependent: :destroy
+  has_many :companies, through: :involved_companies
+  
   has_many :critics, as: :criticable, dependent: :destroy
   has_and_belongs_to_many :platforms
   has_and_belongs_to_many :genres

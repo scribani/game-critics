@@ -28,7 +28,7 @@ class GamesController < ApplicationController
 
     @developers_total = InvolvedCompany.where(developer: true).map(&:company).uniq
     @developers = @game.involved_companies.where(developer: true).map(&:company)
-    @developer_list = (@developers_total - @developers)
+    @developers_list = (@developers_total - @developers)
 
     @publishers_total = InvolvedCompany.where(publisher: true).map(&:company).uniq
     @publishers = @game.involved_companies.where(publisher: true).map(&:company)
@@ -72,11 +72,11 @@ class GamesController < ApplicationController
 
   # DELETE /games/:id
   def destroy
-    game = Game.find(params[:id])
-    authorize game
+    @game = Game.find(params[:id])
+    authorize @game
 
-    game.destroy
-    redirect_to game_path
+    @game.destroy
+    redirect_to root_path
   end
 
   # POST /games/:id/add_genre
@@ -131,11 +131,16 @@ class GamesController < ApplicationController
 
   # -----------DELETE
   # DELETE /games/:id/publisher
-  # def remove_publisher
-  #   render plain: "removeing publisher"
-  #   @game = Game.find(params[:id])
-  #   company = Company.find(params[:company_id])
-  # end
+  def remove_publisher
+    @game = Game.find(params[:id])
+    authorize @game
+
+    company = Company.find(params[:publisher_id])
+    comp_pub = @game.involved_companies.where(company_id: company).first
+    @game.involved_companies.delete(comp_pub)
+
+    redirect_to @game
+  end
 
   def game_params
     params.require(:game).permit(:name, :summary, :release_date, :category, :rating, :parent_id, :cover)

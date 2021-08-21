@@ -17,14 +17,15 @@
 <div>
   <strong>Developers: </strong><span><%= @developers.map {|dev| dev.name}.join(", ") %></span>
 </div>
-<div>
-  <strong>Publishers: </strong><span><%= @publishers.map {|pub| pub.name}.join(", ") %></span>
-</div> 
 
-<%# 
-<div>
-  <%= link_to "x", remove_publisher_path(@game, company_id: publisher), method: :delete %>
-</div> %>
+
+
+<% @publishers.each do |publisher| %>
+  <div>
+    <span><%= publisher.name %></span>
+    <%= link_to 'x', remove_publisher_path(@game, publisher_id: publisher), method: :delete %>
+  </div>
+<% end %>
 
 <h2>Add Relations</h2>
 
@@ -44,7 +45,7 @@
 
   <%= form_with url: "/games/#{@game.id}/developer" do |form| %>
     <div>
-      <%= form.collection_select :develop_id, @developer_list, :id, :name, prompt: "Select developer" %>
+      <%= form.collection_select :develop_id, @developers_list, :id, :name, prompt: "Select developer" %>
     </div>
     <%= form.submit "Add Developer" %>
   <% end %>

@@ -5,9 +5,18 @@ class GamePolicy < ApplicationPolicy
     end
   end
   def add_platform?
-    false
+    user.admin?
   end
   def add_genre?
-    false
+    user.admin?
+  end
+  def add_developer?
+    user.admin?
+  end
+  def add_publisher?
+    user.admin?
+  end
+  def remove_publisher?
+    user.admin?
   end
 end

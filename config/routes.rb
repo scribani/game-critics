@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   post "/games/:id/publisher", to: "games#add_publisher"
 
 
-  # delete 'games/:id/publisher/:id', to: 'games#remove_publisher', as: :remove_publisher
-  # resources :remove_publisher
+  delete 'games/:id/publisher/:id', to: 'games#remove_publisher', as: :remove_publisher
+  resources :remove_publisher
 
   # probar si es necesario
   resources :games do
