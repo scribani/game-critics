@@ -4,9 +4,11 @@ class GamePolicy < ApplicationPolicy
       scope.all
     end
   end
+
   def add_platform?
     false
   end
+
   def add_genre?
     false
   end

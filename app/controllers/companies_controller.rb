@@ -9,6 +9,8 @@ class CompaniesController < ApplicationController
   def show
     @company = Company.find(params[:id])
     authorize @company
+
+    @critics = @company.critics
     render :show
   end
 
