@@ -28,6 +28,9 @@ gem "omniauth-github", github: "omniauth/omniauth-github", branch: "master"
 gem "omniauth-gitlab"
 gem "omniauth-rails_csrf_protection"
 
+# Pundit authorization
+gem "pundit"
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
