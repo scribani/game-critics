@@ -1,4 +1,6 @@
 class CallbacksController < Devise::OmniauthCallbacksController
+  after_action :skip_authorization
+
   def github
     user = User.from_omniauth(request.env["omniauth.auth"])
     signin_and_redirect(user)
