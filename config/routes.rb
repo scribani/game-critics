@@ -8,9 +8,11 @@ Rails.application.routes.draw do
   # Routes for devise
   devise_for :users, controllers: {
     omniauth_callbacks: "callbacks",
-    registrations: "users/registrations"
+    registrations: "users/registrations",
+    sessions: 'users/sessions',
+    passwords: 'users/passwords'
   }
-
+  
   resources :critics
   resources :involved_companies
   resources :genres
