@@ -1,0 +1,41 @@
+<h2>Game details</h2>
+
+<div>
+  <strong>Name: </strong><span><%= @game.name %></span>
+  <strong>Release date: </strong><span><%= @game.release_date.year %></span>
+  <strong>Rating: </strong><span><%= @game.rating %></span>
+</div>
+
+<h3> Game Details</h3>
+
+<div>
+  <strong>Genres: </strong><span><%= @genres.join(", ") %></span>
+</div>
+<div>
+  <strong>Platforms: </strong><span><%= @platforms.join(", ") %></span>
+</div>
+<div>
+  <strong>Developers: </strong><span><%= @developers.map {|dev| dev.name}.join(", ") %></span>
+</div>
+<div>
+  <strong>Publishers: </strong><span><%= @publishers.map {|pub| pub.name}.join(", ") %></span>
+</div> 
+
+<h2>Add Relations</h2>
+
+  <%= form_for [@game, @genre] do |form| %>
+    <div>
+      <%= form.collection_select :id,(Genre.all - @game.genres), :id, :name, prompt: "Select genre" %>
+    </div>
+    <%= form.submit "Add Genre" %>
+  <% end %>
+  
+  <%= form_for [@game, @platform] do |form| %>
+    <div>
+      <%= form.collection_select :id,(Platform.all - @game.platforms), :id, :name, prompt: "Select platform" %>
+    </div>
+    <%= form.submit "Add Platform" %>
+  <% end %>
+
+
+<%= link_to "Back", games_path %>
