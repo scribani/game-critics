@@ -1,15 +1,29 @@
-<h1>Games</h1>
-<%= link_to "New game", new_game_path %>
+<div class = "container">
+  <h1 class = "heading--sm mb-16" >Games</h1>
+  <%= link_to "New Game", new_game_path, class:"btn btn--primary btn--small btn--new mb-16" %>
 
   <% @games.each do |game| %>
-  <div>
-    <div> <%= game.name %></div>
-    <div> <%= game.rating %></div>
-    <div> <%= game.release_date.year %></div>
-    <div> <%= game.summary %></div>
-    <div> <%= link_to (image_tag game.cover), game_path(game) %> </div>
-    <div> <%= link_to "edit", edit_game_path(game) %> </div>
-    <div> <%= link_to "delete", game_path(game), method: :delete %></div>
-    <br>
+    <div class = "card">
+      <div class = "card--img" > <%= link_to (image_tag game.cover), game_path(game) %> </div>
+      <div class = "card--detail-container">
+        <div class = "card">
+          <div class = "content--lg ">
+            <%= game.name %>
+            <%= game.release_date.year %>
+          </div>
+          <div>
+            <%= game.rating %>
+          </div>
+        </div>
+        <div class = "content--xs card--content-text "> <%= game.summary %></div>
+        <div class = "card--icons-container content--xs ">
+          <div> 2 critics </div>
+          <div class= "flex justify-end gap-8">
+            <%= link_to image_tag('/icons/edit.svg'), edit_game_path(game), :class => "btn btn--only-icon btn--secondary btn--small btn--only-icon-width" %>
+            <%= link_to image_tag('/icons/delete.png'), game_path(game), :class => "btn btn--only-icon btn--secondary btn--small btn--only-icon-width", method: :delete %>
+          </div>
+        </div>
+      </div>
     </div>
   <% end %>
+</div>

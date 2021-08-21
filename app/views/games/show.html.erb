@@ -22,23 +22,19 @@
 </div> 
 
 <h2>Add Relations</h2>
-  <%= form_with model: @games do |form| %>
-    <div>
-      <%= form.collection_select :name, (Genre.all - @game.genres), :id, :name, prompt: "Select genre" %>
-      <%= form.submit "Add Genre" %>
-    </div>
-    <div>
-      <%= form.collection_select :name, (Platform.all - @game.platforms), :id, :name, prompt: "Select platform" %>
-      <%= form.submit "Add Platforms" %>
-    </div>
-    <div>
-      <%= form.collection_select :name, (InvolvedCompany.all - @developers.name), :id, :name, prompt: "Select company" %>
-      <%= form.submit "Add Developers" %>
-    </div>
-    <div>
-      <%# <%= form.collection_select :name, (User.all - @game.users), :id, :name, prompt: "Select company" %> %>
-      <%# <%= form.submit "Add Publisher" %> %>
-    </div>
+
+  <%= form_for [@game, @genre] do |form| %>
+    <div>
+      <%= form.collection_select :id,(Genre.all - @game.genres), :id, :name, prompt: "Select genre" %>
+    </div>
+    <%= form.submit "Add Genre" %>
+  <% end %>
+  
+  <%= form_for [@game, @platform] do |form| %>
+    <div>
+      <%= form.collection_select :id,(Platform.all - @game.platforms), :id, :name, prompt: "Select platform" %>
+    </div>
+    <%= form.submit "Add Platform" %>
   <% end %>
 
 

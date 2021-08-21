@@ -1,0 +1,140 @@
+/* Background colors */
+.bg-gray-100 {
+  background-color: var(--gray-100);
+}
+
+.bg-primary-300 {
+  background-color: var(--primary-300);
+}
+
+.bg-primary-100 {
+  background-color: var(--primary-100);
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.bg-gray-file_field {
+  background-color: var(--file-field-bg-gray);
+}
+
+/* Font colors */
+.white {
+  color: white;
+}
+
+.primary-500 {
+  color: var(--primary-500);
+}
+
+.gray-200 {
+  color: var(--gray-200);
+}
+
+.gray-300 {
+  color: var(--gray-300);
+}
+
+.gray-400 {
+  color: var(--gray-400);
+}
+
+.error-300 {
+  color: var(--error-300);
+}
+
+/* Margins */
+.mb-4 {
+  margin-bottom: 4px;
+}
+
+.mt-4 {
+  margin-top: 4px;
+}
+
+.mb-8 {
+  margin-bottom: 8px;
+}
+
+.mb-10 {
+  margin-bottom: 10px;
+}
+
+.mb-16 {
+  margin-bottom: 16px;
+}
+
+.mt-16 {
+  margin-top: 16px;
+}
+
+.mt-32 {
+  margin-top: 32px;
+}
+
+.mb-32 {
+  margin-bottom: 32px;
+}
+.mb-40 {
+  margin-bottom: 40px;
+}
+
+/* Paddings */
+.p-0 {
+  padding: 0;
+}
+
+.p-x-16 {
+  padding: 0 16px;
+}
+.p-16 {
+  padding: 16px;
+}
+
+.py-8 {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.pb-8 {
+  padding-bottom: 8px;
+}
+
+.m-8-0 {
+  margin: 8px 0px;
+}
+/* Text styling */
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+/* custom */
+
+.no-decoration {
+  text-decoration: none;
+}
+
+.border-radius-8 {
+  border-radius: 8px;
+}
+.border-radius-6 {
+  border-radius: 6px;
+}
+.border-radius-4 {
+  border-radius: 4px;
+}
+.box-shadow-l {
+  box-shadow: var(--shadow-l);
+}
+
+.border-1-gray {
+  border: 1px solid var(--gray-200);
+}
+.overflow-hidden {
+  overflow: hidden;
+}

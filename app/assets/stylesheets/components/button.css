@@ -65,3 +65,14 @@
   padding: 12px 24px;
   letter-spacing: 1.5px;
 }
+
+.btn--new {
+  width: 125px;
+}
+.btn--only-icon {
+  padding: 8px;
+  border-radius: 50px;
+}
+.btn--only-icon-width {
+  width: 28px;
+}

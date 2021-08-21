@@ -1,21 +1,27 @@
 class GamesController < ApplicationController
-  #get /games
+  # get /games
   def index
     @games = Game.all
   end
 
-  #get /games/new
+  # get /games/new
   def new
     @game = Game.new
     @main_games = Game.main_game
   end
+
   # GET /games/:id
   def show
     @game = Game.find(params[:id])
-    @genres = @game.genres.map {|genre| genre.name}
-    @platforms = @game.platforms.map {|platform| platform.name}
-    @developers = @game.involved_companies.where(developer: true).map {|ic| ic.company}
-    @publishers = @game.involved_companies.where(publisher: true).map {|ic| ic.company}
+
+    @genre = Genre.new
+    @platform = Platform.new
+    @developer = InvoldedCompany.new
+
+    @genres = @game.genres.map(&:name)
+    @platforms = @game.platforms.map(&:name)
+    @developers = @game.involved_companies.where(developer: true).map(&:company)
+    @publishers = @game.involved_companies.where(publisher: true).map(&:company)
     # @critics = @game.critics
 
     # @game = Game.all
@@ -36,7 +42,7 @@ class GamesController < ApplicationController
   def edit
     @game = Game.find(params[:id])
   end
-  
+
   # PATCH/PUT /games/:id
   def update
     @game = Game.find(params[:id])
@@ -58,14 +64,21 @@ class GamesController < ApplicationController
   # POST /games/:id/add_genre
   def add_genre
     game = Game.find(params[:id])
-    genre = Genre.find(params[:genre_id])
+    genre = Genre.find(params[:genre][:id])
 
     game.genres << genre
-    render json: nil, status: :ok
+  end
+
+  # POST /games/:id/add_genre
+  def add_platform
+    game = Game.find(params[:id])
+    platform = Platform.find(params[:platform][:id])
+
+    game.platforms << platform
   end
 
   def game_params
-    params.require(:game).permit(:name, :summary, :release_date, :category, :rating, :parent_id, :cover)
+    params.require(:game).permit(:name, :summary, :release_date, :category, :rating, :parent_id,
+                                 :cover)
   end
-
 end
