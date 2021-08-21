@@ -21,12 +21,20 @@ class GamesController < ApplicationController
 
     @genre = Genre.new
     @platform = Platform.new
-    # @developer = InvoldedCompany.new
 
     @genres = @game.genres.map(&:name)
     @platforms = @game.platforms.map(&:name)
+
+
+    @developers_total = InvolvedCompany.where(developer: true).map(&:company).uniq
     @developers = @game.involved_companies.where(developer: true).map(&:company)
+    @developer_list = (@developers_total - @developers)
+
+    @publishers_total = InvolvedCompany.where(publisher: true).map(&:company).uniq
     @publishers = @game.involved_companies.where(publisher: true).map(&:company)
+    @publishers_list = (@publishers_total - @publishers)
+
+
     # @critics = @game.critics
 
     # @game = Game.all
@@ -42,13 +50,11 @@ class GamesController < ApplicationController
     else
       render "new"
     end
-
   end
 
   # GET /games/:id/edit
   def edit
     @game = Game.find(params[:id])
-
     authorize @game
   end
 
@@ -62,7 +68,6 @@ class GamesController < ApplicationController
     else
       render :edit
     end
-
   end
 
   # DELETE /games/:id
@@ -72,7 +77,6 @@ class GamesController < ApplicationController
 
     game.destroy
     redirect_to game_path
-
   end
 
   # POST /games/:id/add_genre
@@ -81,26 +85,57 @@ class GamesController < ApplicationController
     authorize game
 
     genre = Genre.find(params[:genre][:id])
-
     game.genres << genre
 
     redirect_to game
-
   end
 
   # POST /games/:id/add_genre
   def add_platform
-
     game = Game.find(params[:id])
     authorize game
 
     platform = Platform.find(params[:platform][:id])
-
     game.platforms << platform
 
     redirect_to game
-
   end
+
+  # POST /games/:id/developers
+  def add_developer
+    @game = Game.find(params[:id])
+    authorize @game
+
+    company = Company.find(params[:develop_id])
+    @game.companies << company
+    comp_dev = @game.involved_companies.where(company_id: company).first
+    comp_dev.developer = true
+    comp_dev.save
+
+    redirect_to @game
+  end
+
+  # POST /games/:id/publishers
+  def add_publisher
+    @game = Game.find(params[:id])
+    authorize @game
+
+    company = Company.find(params[:publisher_id])
+    @game.companies << company
+    comp_pub = @game.involved_companies.where(company_id: company).first
+    comp_pub.publisher = true
+    comp_pub.save
+
+    redirect_to @game
+  end
+
+  # -----------DELETE
+  # DELETE /games/:id/publisher
+  # def remove_publisher
+  #   render plain: "removeing publisher"
+  #   @game = Game.find(params[:id])
+  #   company = Company.find(params[:company_id])
+  # end
 
   def game_params
     params.require(:game).permit(:name, :summary, :release_date, :category, :rating, :parent_id, :cover)

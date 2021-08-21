@@ -21,6 +21,11 @@
   <strong>Publishers: </strong><span><%= @publishers.map {|pub| pub.name}.join(", ") %></span>
 </div> 
 
+<%# 
+<div>
+  <%= link_to "x", remove_publisher_path(@game, company_id: publisher), method: :delete %>
+</div> %>
+
 <h2>Add Relations</h2>
 
   <%= form_for [@game, @genre] do |form| %>
@@ -37,5 +42,18 @@
     <%= form.submit "Add Platform" %>
   <% end %>
 
+  <%= form_with url: "/games/#{@game.id}/developer" do |form| %>
+    <div>
+      <%= form.collection_select :develop_id, @developer_list, :id, :name, prompt: "Select developer" %>
+    </div>
+    <%= form.submit "Add Developer" %>
+  <% end %>
+
+  <%= form_with url: "/games/#{@game.id}/publisher" do |form| %>
+    <div>
+      <%= form.collection_select :publisher_id, @publishers_list, :id, :name, prompt: "Select publisher" %>
+    </div>
+    <%= form.submit "Add Publisher" %>
+  <% end %>
 
 <%= link_to "Back", games_path %>

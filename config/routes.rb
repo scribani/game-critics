@@ -4,6 +4,17 @@ Rails.application.routes.draw do
 
   post "/games/:id/genres", to: "games#add_genre"
   post "/games/:id/platforms", to: "games#add_platform"
+  post "/games/:id/developer", to: "games#add_developer"
+  post "/games/:id/publisher", to: "games#add_publisher"
+
+
+  # delete 'games/:id/publisher/:id', to: 'games#remove_publisher', as: :remove_publisher
+  # resources :remove_publisher
+
+  # probar si es necesario
+  resources :games do
+    resources :involved_companies
+  end
 
   # Routes for devise
   devise_for :users, controllers: {
