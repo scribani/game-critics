@@ -85,8 +85,8 @@
     "country": "Japan",
     "start_date": "1993-11-16",
     "cover": {
-      "io_path": "public/images/companies/scei.png",
-      "filename": "scei.png"
+      "io_path": "public/images/companies/sony_interactive_entertainment.png",
+      "filename": "sony_interactive_entertainment.png"
     }
   },
   {
@@ -135,8 +135,8 @@
     "country": "United States of America",
     "start_date": "1991-12-31",
     "cover": {
-      "io_path": "public/images/companies/atlus_usa.png",
-      "filename": "atlus_usa.png"
+      "io_path": "public/images/companies/atlus.png",
+      "filename": "atlus.png"
     }
   },
   {
