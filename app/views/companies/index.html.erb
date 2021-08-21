@@ -44,3 +44,7 @@
   <% end %>
 </div>
 
+<%= paginate @companies %>
+<div class="content--xs">
+  <%= page_entries_info @companies, entry_name: 'game' %>
+</div>

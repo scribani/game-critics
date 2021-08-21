@@ -1,0 +1,38 @@
+<div>
+  <p><%= @company.description%></p>
+
+  <% if @company.games_count.positive? %>
+    <h3> Games (<%= @company.games_count %>) </h3>
+  <% end %>
+
+  <div>
+    <% @company.games.each do |game| %>
+      <div class = "card">
+        <div class = "card--img" > <%= link_to (image_tag game.cover), game_path(game) %> </div>
+        <div class = "card--detail-container">
+          <div class = "card">
+            <div class = "content--lg ">
+              <%= game.name %>
+              <%= game.release_date.year %>
+            </div>
+            <div>
+              <%= game.rating %>
+            </div>
+          </div>
+          <div class = "content--xs card--content-text "> <%= game.summary %></div>
+          <div class = "card--icons-container content--xs ">
+            <div> 2 critics </div>
+            <div class= "flex justify-end gap-8">
+              <%= link_to image_tag('/icons/edit.svg'), edit_game_path(game), :class => "btn btn--only-icon btn--secondary btn--small btn--only-icon-width" %>
+              <%= link_to image_tag('/icons/delete.png'), game_path(game), :class => "btn btn--only-icon btn--secondary btn--small btn--only-icon-width", method: :delete %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+
+

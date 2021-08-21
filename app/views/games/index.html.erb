@@ -26,4 +26,9 @@
       </div>
     </div>
   <% end %>
+
+  <%= paginate @games %>
+  <div class="content--xs">
+    <%= page_entries_info @games, entry_name: 'game' %>
+  </div>
 </div>
