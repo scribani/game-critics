@@ -76,3 +76,15 @@
 .btn--only-icon-width {
   width: 28px;
 }
+
+.btn--card {
+  width: 59px;
+  height: 44ps;
+  text-align: center;
+}
+
+.btn-relations {
+  display: inline-flex;
+  width: auto;
+  height: 20px;
+}

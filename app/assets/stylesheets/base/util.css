@@ -11,6 +11,12 @@
   background-color: var(--primary-100);
 }
 
+.bg-secondary-300 {
+  background-color: var(--secondary-300);
+}
+.bg-secondary-200 {
+  background-color: var(--secondary-200);
+}
 .bg-white {
   background-color: white;
 }
@@ -100,7 +106,9 @@
 .pb-8 {
   padding-bottom: 8px;
 }
-
+.pb-16 {
+  padding-bottom: 16px;
+}
 .m-8-0 {
   margin: 8px 0px;
 }

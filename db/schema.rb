@@ -112,8 +112,8 @@ ActiveRecord::Schema.define(version: 2021_08_21_214346) do
   create_table "involved_companies", force: :cascade do |t|
     t.bigint "company_id", null: false
     t.bigint "game_id", null: false
-    t.boolean "developer"
-    t.boolean "publisher"
+    t.boolean "developer", default: false
+    t.boolean "publisher", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["company_id", "game_id"], name: "index_involved_companies_on_company_id_and_game_id", unique: true

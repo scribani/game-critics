@@ -1,4 +1,5 @@
 class GamesController < ApplicationController
+  include GamesConcern
   # get /games
   def index
     @games = Game.order(:name).page(params[:page]).per(5)
@@ -18,17 +19,20 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
     authorize @game
 
-    @genre = Genre.new
-    @platform = Platform.new
-    # @developer = InvoldedCompany.new
+    @genres = @game.genres
+    @platforms = @game.platforms
 
-    @genres = @game.genres.map(&:name)
-    @platforms = @game.platforms.map(&:name)
+    show_pub_dev
+  end
+
+  def show_pub_dev
+    @developers_total = InvolvedCompany.where(developer: true).map(&:company).uniq
     @developers = @game.involved_companies.where(developer: true).map(&:company)
-    @publishers = @game.involved_companies.where(publisher: true).map(&:company)
-    # @critics = @game.critics
+    @developers_list = (@developers_total - @developers)
 
-    # @game = Game.all
+    @publishers_total = InvolvedCompany.where(publisher: true).map(&:company).uniq
+    @publishers = @game.involved_companies.where(publisher: true).map(&:company)
+    @publishers_list = (@publishers_total - @publishers)
   end
 
   # POST /games
@@ -46,7 +50,6 @@ class GamesController < ApplicationController
   # GET /games/:id/edit
   def edit
     @game = Game.find(params[:id])
-
     authorize @game
   end
 
@@ -64,35 +67,11 @@ class GamesController < ApplicationController
 
   # DELETE /games/:id
   def destroy
-    game = Game.find(params[:id])
-    authorize game
+    @game = Game.find(params[:id])
+    authorize @game
 
-    game.destroy
+    @game.destroy
     redirect_to root_path
-  end
-
-  # POST /games/:id/add_genre
-  def add_genre
-    game = Game.find(params[:id])
-    authorize game
-
-    genre = Genre.find(params[:genre][:id])
-
-    game.genres << genre
-
-    redirect_to game
-  end
-
-  # POST /games/:id/add_genre
-  def add_platform
-    game = Game.find(params[:id])
-    authorize game
-
-    platform = Platform.find(params[:platform][:id])
-
-    game.platforms << platform
-
-    redirect_to game
   end
 
   def game_params
