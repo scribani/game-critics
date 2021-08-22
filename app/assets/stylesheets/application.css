@@ -18,6 +18,7 @@
 @import url("./components/button.css");
 @import url("./components/navbar.css");
 @import url("./components/personal.css");
+@import url("./login/login.css");
 @import url("./components/details-header.css");
 
 * {
@@ -27,7 +28,11 @@
 
 a {
   text-decoration: none;
-  color: var(--gray-400);
+
+}
+
+a .primary{
+  color: #D44A78;
 }
 
 .container {
@@ -134,4 +139,8 @@ a {
   margin: 0.2em;
   border: 1px solid #eee;
   color: #ddd;
+}
+
+.body-section{
+  background: #fff
 }

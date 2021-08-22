@@ -1,0 +1,7 @@
+<div>
+  <div>
+    <%= image_tag(@company.cover) if @company.cover.attached? %>
+  </div>
+  <p><%= @company.name%></p>
+  <p><%= @company.start_date %> - <%= @company.country %></p>
+</div>
