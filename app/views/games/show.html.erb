@@ -1,9 +1,9 @@
-<%= render "game-header", game: @game %>
+<%= render "shared/games-header", model: @game %>
 
 <nav>
   <ul>
     <li><%= link_to 'Game Details', game_path(@game) %></li>
-    <li><%= link_to "Critics (#{@critics.size})", critics_path %></li>
+    <li><%= link_to "Critics (#{@critics.size})", critics_path(criticable: "games", criticable_id: @game.id) %></li>
   </ul>
 </nav>
 

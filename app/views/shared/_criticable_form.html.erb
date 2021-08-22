@@ -1,0 +1,21 @@
+<%= form_with(url: "/#{criticable_type}/#{criticable_id}/critics", class: "generic-container") do |form| %>
+  <div class="flex gap-16 mb-8">
+    <div class="input">
+      <%= form.label :title, class:"content--xs overline"%>
+      <div class="input__container">
+        <%= form.text_field :title, class: "input__content", placeholder: "Critic incoming", required: true %>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex gap-16 mb-8">
+    <div class="input">
+      <%= form.label :body, class:"content--xs overline"%>
+      <div class="input__container">
+        <%= form.text_area :body, class: "input__content", placeholder: "This is my respectful critic", required: true %>
+      </div>
+    </div>
+  </div>
+
+  <%= form.submit class: "btn btn--primary" %>
+<% end %>

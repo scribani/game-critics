@@ -1,0 +1,12 @@
+<%= render "shared/#{@criticable_type}-header", model: @criticable %>
+
+<nav>
+  <ul>
+    <li><%= link_to 'Model Details', @criticable %></li>
+    <li><%= "Critics (#{@critics.size})" %></li>
+  </ul>
+</nav>
+
+<%= render 'shared/criticable_form', criticable_type: @criticable_type, criticable_id: @criticable.id %>
+
+<%= link_to 'Back', root_path %>
