@@ -9,8 +9,78 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <%= yield %>
+    <header class="header">
+      <div >
+        <div class="header--content">
+          <%= link_to image_tag("critic-logo.png"), root_path %>
+
+          <input type="checkbox" id="open" class="menu-checkbox">
+          <label for="open" class="menu-open"></label>
+
+          <% if user_signed_in? %>
+            <nav class="menu">
+              <div class="container">
+                <ul class="menu--content .content--sm">
+                  <li class="mb-16">Welcome <%= current_user.username %>!</li>
+                  <li class="menu--item mb-16"><%= link_to 'Edit Profile', edit_user_registration_path %></li>
+                  <li class="menu--item mb-16"><%= link_to 'Games', games_path %></li>
+                  <li class="menu--item mb-16"><%= link_to 'Companies', companies_path %></li>
+                  <li class="btn btn--secondary btn--small mb-16"><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+                </ul>
+              </div>
+            </nav>
+          <% else %>
+            <nav class="menu">
+              <div class="container">
+                <ul class="menu--content .content--sm">
+                  <li class="mb-16">Sign in to start criticizing games and companies</li>
+                  <li class="btn btn--primary btn--small mb-16"> <%= link_to 'Sign in', new_user_session_path %> </li>
+                </ul>
+              </div>
+            </nav>
+          <% end %>
+        </div>
+      </div>
+    </header>
+    <section>
+   <p class="notice"><%= notice %></p>
+   <p class="alert"><%= alert %></p>
+   <% if user_signed_in? %>
+     <%= current_user.email %>
+   <% else %>
+     <%= link_to 'Log in', new_user_session_path %>
+     <%= link_to 'Sign up', new_user_registration_path %>
+   <% end %>
+     <div class="container-yield mt-50">
+      <%= yield %>
+    </div>
+    </section>
+    <footer>
+      <div class="footer--container">
+        <p class="footer--txt content--sm">© 2021 - Codeable Critics</p>
+        <p class="content--sm">Build with <span class="footer--heart">♥</span> by</p>
+
+        <div class="footer--social-container content--xs">
+          <div class="footer--social-name">
+            <%= image_tag "linkdin-vector.svg"%>
+            <p> Ever Ponce</p>
+          </div>
+          <div class="footer--social-name">
+            <%= image_tag "linkdin-vector.svg" %>
+            <p> Mindy León</p>
+          </div>
+          <div class="footer--social-name">
+            <%= image_tag "linkdin-vector.svg" %>
+            <p> Andrés Scribani</p>
+          </div>
+          <div class="footer--social-name">
+            <%= image_tag "linkdin-vector.svg" %>
+            <p> Ana Isabel León</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
   </body>
 </html>

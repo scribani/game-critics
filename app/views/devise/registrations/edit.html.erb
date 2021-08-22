@@ -1,0 +1,91 @@
+<section class="section--sm">
+  <div class="container">
+    <h2 class="heading">Edit User</h2>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "generic-container" }) do |f| %>
+      <div class="flex gap-16 mb-8">
+        <div class="input">
+          <%= f.label :username, class: "content--xs overline" %>
+          <div class="input__container">
+            <%= f.text_field :username, autofocus: true, placeholder: "johndoe", class: "input__content" %>
+          </div>
+            <% if resource.errors.messages[:username].any? %>
+              <span class="content--sm input__error-message"><%= resource.errors.messages[:username].join(", ")%></span>
+            <% end %>
+        </div>
+      </div>
+      <div class="flex gap-16 mb-8">
+        <div class="input">
+          <%= f.label :email, class: "content--xs overline" %>
+          <div class="input__container">
+            <%= f.email_field :email, placeholder: "john@ecample.com", class: "input__content" %>
+          </div>
+            <% if resource.errors.messages[:email].any? %>
+              <span class="content--sm input__error-message"><%= resource.errors.messages[:email].join(", ")%></span>
+            <% end %>
+        </div>
+      </div>
+
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+      <div class="flex gap-16 mb-8">
+        <div class="input">
+          <%= f.label :password, class: "content--xs overline" %>
+          <div class="input__container">
+            <% if @default_password %>
+              <%= f.password_field :password, placeholder: "******", class: "input__content", required: true %>
+            <% else %>
+              <%= f.password_field :password, placeholder: "******", class: "input__content" %>
+            <% end %>
+          </div>
+            <% if resource.errors.messages[:password].any? %>
+              <span class="content--sm input__error-message"><%= resource.errors.messages[:password].join(", ")%></span>
+            <% end %>
+            <% if @minimum_password_length %>
+              <span class="content--sm gray-300">(<%= @minimum_password_length %> characters minimum) </span>
+            <% end %>
+            <span class="content--sm gray-300"><i>(leave blank if you don't want to change it)</i></span>
+        </div>
+      </div>
+      <div class="flex gap-16 mb-8">
+        <div class="input">
+          <%= f.label :password_confirmation, class: "content--xs overline" %>
+          <div class="input__container">
+            <%= f.password_field :password_confirmation, placeholder: "******", class: "input__content" %>
+          </div>
+            <% if resource.errors.messages[:password_confirmation].any? %>
+              <span class="content--sm input__error-message"><%= resource.errors.messages[:password_confirmation].join(", ")%></span>
+            <% end %>
+        </div>
+      </div>
+      <div class="flex gap-16 mb-8">
+        <div class="input">
+          <%= f.label :current_password, class: "content--xs overline" %>
+          <% if @default_password %>
+            <div class="input__container">
+              <%= f.password_field :current_password, placeholder: "******", value: @default_password, readonly: true, class: "input__content" %>
+            </div>
+            <span><i class="content--sm gray-300">(Change your password to update this default password)</i></span>
+          <% else %>
+            <div class="input__container">
+              <%= f.password_field :current_password, placeholder: "******", class: "input__content" %>
+            </div>
+            <span><i class="content--sm gray-300">(we need your current password to confirm your changes)</i></span>
+          <% end %>
+          <% if resource.errors.messages[:current_password].any? %>
+            <span class="content--sm input__error-message"><%= resource.errors.messages[:current_password].join(", ")%></span>
+          <% end %>
+        </div>
+      </div>
+      
+      <%= f.submit "Update", class: "btn btn--primary" %>
+    <% end %>
+
+    <h3 class="heading--xs mb-8">Cancel my account</h3>
+    <div class="flex gap-16 mb-8">
+    <p class="content--sm">Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn--subtle" %></p>
+    </div>
+    <%= link_to "Back", :back %>
+  </div>
+</section>
