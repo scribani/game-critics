@@ -71,8 +71,8 @@
   margin-bottom: 16px;
 }
 
-.mt-16 {
-  margin-top: 16px;
+.mt-24 {
+  margin-top: 24px;
 }
 
 .mt-32 {
@@ -85,6 +85,9 @@
 
 .mt-64 {
   margin-top: 64px;
+}
+.mb-24 {
+  margin-bottom: 32px;
 }
 
 .mb-32 {
@@ -153,4 +156,8 @@
 }
 .overflow-hidden {
   overflow: hidden;
+}
+
+.mx-w {
+  max-width: 328px;
 }

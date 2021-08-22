@@ -14,11 +14,6 @@ Rails.application.routes.draw do
 
   resources :remove_publisher, :remove_developer, :remove_platform, :remove_genre
 
-  # probar si es necesario
-  resources :games do
-    resources :involved_companies
-  end
-
   # Routes for devise
   devise_for :users, controllers: {
     omniauth_callbacks: "callbacks",
@@ -27,23 +22,13 @@ Rails.application.routes.draw do
     passwords: "users/passwords"
   }
 
-  resources :critics
   resources :involved_companies
   resources :genres
   resources :platforms
-
-  resources :games do
-    resources :critics
-  end
-
-  resources :games do
-    resources :genres
-  end
-
-  resources :games do
-    resources :platforms
-  end
-
+  resources :games
   resources :companies
   resources :users
+
+  get "/:criticable/:criticable_id/critics", to: "critics#index", as: :critics
+  post "/:criticable/:criticable_id/critics", to: "critics#create"
 end

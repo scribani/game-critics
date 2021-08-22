@@ -1,13 +1,13 @@
-<div>
-  <p><%= @company.description%></p>
+<div class="show-details">
+  <p class="content--xs mb-16 txt"><%= @company.description%></p>
 
   <% if @company.games_count.positive? %>
-    <h3> Games (<%= @company.games_count %>) </h3>
+    <h3 class="heading--xs mb-16"> Games (<%= @company.games_count %>) </h3>
   <% end %>
 
   <div>
     <% @company.games.each do |game| %>
-      <div class = "card">
+      <div class = "card mb-16">
         <div class = "card--img" > <%= link_to (image_tag game.cover), game_path(game) %> </div>
         <div class = "card--detail-container">
           <div class = "card">
@@ -21,7 +21,7 @@
           </div>
           <div class = "content--xs card--content-text "> <%= game.summary %></div>
           <div class = "card--icons-container content--xs ">
-            <div> 2 critics </div>
+            <div> <p> <%= @critics.size %> critics </p> </div>
             <div class= "flex justify-end gap-8">
               <%= link_to image_tag('/icons/edit.svg'), edit_game_path(game), :class => "btn btn--only-icon btn--secondary btn--small btn--only-icon-width" %>
               <%= link_to image_tag('/icons/delete.png'), game_path(game), :class => "btn btn--only-icon btn--secondary btn--small btn--only-icon-width", method: :delete %>

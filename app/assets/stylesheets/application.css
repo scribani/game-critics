@@ -18,6 +18,7 @@
 @import url("./components/button.css");
 @import url("./components/navbar.css");
 @import url("./login/login.css");
+@import url("./components/details-header.css");
 
 * {
   margin: 0;
@@ -26,7 +27,7 @@
 
 a {
   text-decoration: none;
-  
+
 }
 
 a .primary{

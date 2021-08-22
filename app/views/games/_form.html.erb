@@ -31,7 +31,7 @@
   </div>
   <div>
     <div><%= form.label :parent_id %></div>
-    <%= form.collection_select :parent_id, @main_games, :id, :name, prompt: "Select one game" %>
+    <%= form.collection_select :parent_id, main_games, :id, :name, prompt: "Select one game" %>
   </div>
   <div>
     <div><%= form.label :cover %></div> 
