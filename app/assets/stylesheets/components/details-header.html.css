@@ -1,0 +1,9 @@
+.cover--company img {
+  width: 328px;
+  height: 160px;
+  object-fit: cover;
+}
+
+.txt {
+  text-align: center;
+}

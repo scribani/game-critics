@@ -15,9 +15,7 @@
   /* border: 2px solid blue; */
   width: 120px;
   height: 160px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  object-fit: contain;
 }
 
 .card--detail-container {
