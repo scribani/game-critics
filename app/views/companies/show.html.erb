@@ -1,12 +1,16 @@
-<%= render "shared/companies-header", model: @company %>
+<div class="container">
+  <%= render "company-header", company: @company %>
 
-<nav>
-  <ul>
-    <li><%= link_to 'Company Details', company_path(@company) %></li>
-    <li><%= link_to "Critics (#{@critics.size})", critics_path(criticable: "companies", criticable_id: @company.id) %></li>
-  </ul>
-</nav>
+  <div class="navbar--container mx-w p-x-16 ">
+    <nav class="navbar">
+      <ul class="mb-24">
+        <li class="content--b"><%= link_to 'Company Details', company_path(@company) %></li>
+        <li class="content--b"><%= link_to "Critics (#{@critics.size})", critics_path(criticable: "games", criticable_id: @company.id) %></li>
+      </ul>
+    </nav>
+  <div>
 
-<%= render "company-detail", company: @company %>
+  <%= render "company-detail", company: @company %>
 
-<%= link_to 'Back', companies_path %>
+  <%= link_to 'Back', companies_path, class:"content--b back" %>
+</div>

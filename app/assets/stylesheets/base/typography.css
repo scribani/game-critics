@@ -21,6 +21,11 @@ body,
   font-weight: 600;
 }
 
+.heading--xs {
+  font-size: 20px;
+  line-height: 28px;
+}
+
 .content--xl {
   font-size: 20px;
   line-height: 28px;

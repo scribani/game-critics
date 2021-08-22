@@ -28,7 +28,7 @@
       <% @platforms.each do |platform| %>
         <div>
           <%= platform.name %>
-          <%= link_to "x", remove_platform_path(@game, platform_id: platform), method: :delete %>
+          <%= link_to image_tag('/icons/cross.png'), remove_platform_path(@game, platform_id: platform), method: :delete %>
         </div>
       <% end %>
     </div>
@@ -38,7 +38,7 @@
       <% @developers.each do |developer| %>
         <div>
           <span><%= developer.name %></span>
-          <%= link_to 'x', remove_developer_path(@game, developer_id: developer), method: :delete %>
+          <%= link_to image_tag('/icons/cross.png'), remove_developer_path(@game, developer_id: developer), method: :delete %>
         </div>
       <% end %>
     </div>
@@ -48,7 +48,7 @@
       <% @publishers.each do |publisher| %>
         <div>
           <span><%= publisher.name %></span>
-          <%= link_to 'x', remove_publisher_path(@game, publisher_id: publisher), method: :delete %>
+          <%= link_to image_tag('/icons/cross.png'), remove_publisher_path(@game, publisher_id: publisher), method: :delete %>
         </div>
       <% end %>
     </div>

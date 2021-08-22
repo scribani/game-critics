@@ -7,10 +7,10 @@
       <div class = "card--img" > <%= link_to (image_tag game.cover), game_path(game) %> </div>
       <div class = "card--detail-container">
         <div class = "card">
-          <div class = "content--lg ">
-            <%= game.name %>
+          <div class = "content--lg card--flex-column">
+            <div class = "size--box-title"><%= game.name %></div>
             <% if game.release_date %>
-              <%= game.release_date.year %>
+              <span class = "content--xs "> <%= game.release_date.year %> </span>
             <% end %>
           </div>
           <div class = " content--sm  bg-secondary-300 header--content-center white border-radius-4 size--box-rating">
@@ -18,11 +18,11 @@
           </div>
         </div>
         <div class = "content--xs card--content-text "> <%= game.summary %></div>
-        <div class = "card--icons-container content--xs ">
+        <div class = "card--icons-container content--xs pb-8 ">
           <div class = " gray-300 "> <%= game.critics.size %> critics </div>
-          <div class= "flex justify-end gap-8">
-            <%= link_to image_tag('/icons/edit.svg'), edit_game_path(game), :class => "btn btn--only-icon btn--secondary btn--small btn--only-icon-width" %>
-            <%= link_to image_tag('/icons/delete.png'), game_path(game), :class => "btn btn--only-icon btn--secondary btn--small btn--only-icon-width", method: :delete, data: { confirm: "Are you sure?" } %>
+          <div class= "flex justify-center align-center  gap-8">
+            <%= link_to image_tag('/icons/edit.png'), edit_game_path(game), :class => "flex justify-center align-center" %>
+            <%= link_to image_tag('/icons/delete.png'), game_path(game), :class => "flex justify-center align-center", method: :delete, data: { confirm: "Are you sure?" } %>
           </div>
         </div>
       </div>

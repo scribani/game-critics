@@ -1,0 +1,7 @@
+<div>
+  <div class="cover--company mb-16">
+    <%= image_tag(@company.cover) if @company.cover.attached? %>
+  </div>
+  <p class="heading--sm"><%= @company.name%></p>
+  <p class="content--xs mb-24"><%= @company.start_date.year %> - <%= @company.country %></p>
+</div>
