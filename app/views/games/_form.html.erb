@@ -7,36 +7,46 @@
     </ul>
   </div>
 <% end %>
-
-<%= form_with model: game do |form| %>
-  <div>
-   <div><%= form.label :name %></div> 
-    <%= form.text_field :name %>
-  </div>
-  <div>
-    <div><%= form.label :summary %></div> 
-    <%= form.text_area :summary %>
-  </div>
-  <div>
-    <div><%= form.label :release_date %></div> 
-    <%= form.date_field :release_date %>
-  </div>
-  <div>
-    <div><%= form.label :category %></div> 
-    <%= form.select :category, options_for_select([["Main game", "main_game"], ["Expansion", "expansion"]]) %>
+<h1 class = "heading--sm mb-16 mt-48" > New Game</h1>
+<%= form_with model: @game do |form| %>
+<div class = "mb-16">
+  <p class = "overline" ><%= form.label :name %></p>
+  <%= form.text_field :name, class: " border-1-gray border-radius-6 input__container", placeholder: "Secret planning"%> 
+</div>
+  
+  <div class = "mb-16">
+    <p class = "overline" ><%= form.label :summary %></p>
+      <%= form.text_area :summary, class: " border-1-gray border-radius-6 input__container", placeholder: "This is the best department yet..." %>
     </div>
   <div>
-    <div><%= form.label :rating %></div> 
-    <%= form.number_field :rating, in: 0.0..100.0, step: 0.1 %>
+
+  <div class = "mb-16">
+    <p class = "overline" ><%= form.label :release_date %></p>  
+    <%= form.date_field :release_date, class: " border-1-gray border-radius-6 input__container", placeholder: "dd/mm/yyyy" %>
   </div>
-  <div>
-    <div><%= form.label :parent_id %></div>
-    <%= form.collection_select :parent_id, main_games, :id, :name, prompt: "Select one game" %>
-  </div>
-  <div>
-    <div><%= form.label :cover %></div> 
-    <p> <%= form.file_field :cover %> </p> 
+  
+  <div class = "mb-16">
+    <p class = "overline" ><%= form.label :rating %></p> 
+      <%= form.number_field :rating, in: 0.0..100.0, step: 0.1, class: " border-1-gray border-radius-6 input__container", placeholder: "0.0" %>
   </div>
 
-  <%= form.submit %>
+  <div class = "mb-16">
+    <p class = "overline" ><%= form.label :category %></p> 
+    <%= form.select :category, options_for_select([["Main game", "main_game"], ["Expansion", "expansion"]]), {class: 'prueba'} %>
+  </div>
+
+  <div class = "mb-16">
+    <p class = "overline" ><%= form.label :parent_id %></p>
+    <%= form.collection_select :parent_id, @main_games, :id, :name, prompt: "Select one game" %>
+  </div>
+  
+  <div class = "mb-16">
+    <p class = "overline" ><%= form.label :cover %></p> 
+    <%= form.file_field :cover, :class => "content--xs overline transform" %>
+  </div>
+
+  <%= form.submit "Create Game", :class => "btn btn--secondary border-radius-4 btn--medium btn--margin bg-primary-300 " %>
+  <div>
+    <%= link_to 'Back', games_path(@game) %>
+  </div>
 <% end %>

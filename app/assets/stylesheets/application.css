@@ -17,6 +17,7 @@
 @import url("./global.css");
 @import url("./components/button.css");
 @import url("./components/navbar.css");
+@import url("./components/personal.css");
 @import url("./login/login.css");
 @import url("./components/details-header.css");
 
@@ -105,38 +106,39 @@ a .primary{
 
 /* PAGINATION STYLES */
 .pagination {
-  padding:.3em;
-  margin:.3em;
-  font: 13.34px helvetica,arial,freesans,clean,sans-serif;
+  padding: 0.3em;
+  margin: 0.3em;
+  font: 13.34px helvetica, arial, freesans, clean, sans-serif;
 }
 
 .pagination a {
-  padding:.1em .3em;
-  margin:.2em;
-  border:1px solid #aad;
-  text-decoration:none;
-  color:#369;
+  padding: 0.1em 0.3em;
+  margin: 0.2em;
+  border: 1px solid #aad;
+  text-decoration: none;
+  color: #369;
 }
 
-.pagination a:hover,.pagination a:active {
-  border:1px solid #369;
-  color:#000;
+.pagination a:hover,
+.pagination a:active {
+  border: 1px solid #369;
+  color: #000;
 }
 
 .pagination span.current {
-  padding:.1em .3em;
-  margin:.2em;
-  border:1px solid #369;
-  font-weight:bold;
-  background-color:#369;
-  color:#fff;
+  padding: 0.1em 0.3em;
+  margin: 0.2em;
+  border: 1px solid #369;
+  font-weight: bold;
+  background-color: #369;
+  color: #fff;
 }
 
 .pagination span.disabled {
-  padding:.1em .3em;
-  margin:.2em;
-  border:1px solid #eee;
-  color:#ddd;
+  padding: 0.1em 0.3em;
+  margin: 0.2em;
+  border: 1px solid #eee;
+  color: #ddd;
 }
 
 .body-section{

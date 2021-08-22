@@ -5,7 +5,7 @@
     <nav class="navbar">
       <ul class="mb-24">
         <li class="content--b"><%= link_to 'Company Details', company_path(@company) %></li>
-        <li class="content--b"><%= link_to "Critics (#{@company.critics.size})", critics_path %></li>
+        <li class="content--b"><%= link_to "Critics (#{@critics.size})", critics_path(criticable: "games", criticable_id: @company.id) %></li>
       </ul>
     </nav>
   <div>
