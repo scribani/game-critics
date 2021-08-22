@@ -1,9 +1,9 @@
-<%= render "company-header", company: @company %>
+<%= render "shared/companies-header", model: @company %>
 
 <nav>
   <ul>
     <li><%= link_to 'Company Details', company_path(@company) %></li>
-    <li><%= link_to "Critics (#{@critics.size})", critics_path %></li>
+    <li><%= link_to "Critics (#{@critics.size})", critics_path(criticable: "companies", criticable_id: @company.id) %></li>
   </ul>
 </nav>
 

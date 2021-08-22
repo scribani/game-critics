@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_21_214346) do
+ActiveRecord::Schema.define(version: 2021_08_22_020843) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 2021_08_21_214346) do
     t.bigint "criticable_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "approved"
     t.index ["criticable_type", "criticable_id"], name: "index_critics_on_criticable"
     t.index ["user_id"], name: "index_critics_on_user_id"
   end

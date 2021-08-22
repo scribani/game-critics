@@ -22,6 +22,8 @@ class GamesController < ApplicationController
     @genres = @game.genres
     @platforms = @game.platforms
 
+    @critics = @game.critics
+
     show_pub_dev
   end
 
@@ -51,6 +53,8 @@ class GamesController < ApplicationController
   def edit
     @game = Game.find(params[:id])
     authorize @game
+
+    @main_games = Game.main_game
   end
 
   # PATCH/PUT /games/:id

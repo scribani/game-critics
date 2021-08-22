@@ -1,41 +1,5 @@
-<h1 class = "heading--sm mb-16 mt-48" > Edit Game</h1>
+<h2>Edit game</h2>
 
-<% if @game.errors.size.positive? %>
-  <div>
-    <ul>
-      <% @game.errors.full_messages.each do |message| %>
-        <li><%= message %> </li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-<%= form_with model: @game do |form| %>
-  <div class = "mb-16">
-    <p class = "overline" ><%= form.label :name %> </p>
-    <%= form.text_field :name, class: " border-1-gray border-radius-6 input__container"%>
-  </div>
-  <div class = "mb-16">
-    <p class = "overline" ><%= form.label :summary %></p>
-    <%= form.text_area :summary, class: " border-1-gray border-radius-6 input__container content--b ", rows: 20%>
-  </div>
-  <div>
-    <%= form.label :release_date %>
-    <%= form.date_field :release_date %>
-  </div>
-    <div>
-    <%= form.label :rating %>
-    <%= form.number_field :rating, in: 0.0..100.0, step: 0.1 %>
-  </div>
-  <div>
-    <%= form.label :category %>
-    <%= form.select :category, [["Main game", "main_game"], ["Expansion", "expansion"]] %>
-  </div>
+<%= render 'form', game: @game, main_games: @main_games %>
 
-  <div>
-    <%= form.label :cover%>
-    <%= form.file_field :cover %>
-  </div>
-
-  <%= form.submit "Update Game" %>
-<% end %>
-<%= link_to "Back to games", games_path %>
+<%= link_to 'Back', root_path %>

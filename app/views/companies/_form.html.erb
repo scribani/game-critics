@@ -1,3 +1,13 @@
+<% if company.errors.size.positive? %>
+  <div>
+    <ul>
+      <% company.errors.full_messages.each do |message| %>
+        <li><%= message %> </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= form_with model: company do |form| %>
 
   <div>
