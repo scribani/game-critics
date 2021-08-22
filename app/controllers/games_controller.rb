@@ -53,6 +53,8 @@ class GamesController < ApplicationController
   def edit
     @game = Game.find(params[:id])
     authorize @game
+
+    @main_games = Game.main_game
   end
 
   # PATCH/PUT /games/:id

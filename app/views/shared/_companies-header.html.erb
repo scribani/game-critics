@@ -1,0 +1,7 @@
+<div>
+  <div>
+    <%= image_tag(model.cover) if model.cover.attached? %>
+  </div>
+  <p><%= model.name%></p>
+  <p><%= model.start_date %> - <%= model.country %></p>
+</div>
