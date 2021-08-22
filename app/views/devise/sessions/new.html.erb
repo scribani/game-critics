@@ -1,26 +1,33 @@
-<h2>Sign in to your account</h2>
-
+<h2 class="heading--sm text-center mb-16">Sign in to your account</h2>
+<div class="continue-with content--xs">CONTINUE WITH</div>
+<div class="box-login shadow">
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="field mb-16">
+    <%= f.label :email, class: "content--xs user-uppercase"%><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input-user" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+  <div class="field mb-16">
+    <%= f.label :password, class: "content--xs user-uppercase" %><br />
+    <%= f.password_field :password, autocomplete: "current-password",class: "input-user" %>
   </div>
 
+  <div class="field mb-16 content--sm">
   <% if devise_mapping.rememberable? %>
     <div class="field">
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>
     </div>
   <% end %>
+  </div>
 
   <div class="actions">
     <%= f.submit "Sign in" %>
   </div>
 <% end %>
-<h3>Don't have an account?</h3>
-<%= render "devise/shared/links" %>
+
+
+  <%= render "devise/shared/links" %>
+<div class="">Don't have an account?</div>
+
+</div>

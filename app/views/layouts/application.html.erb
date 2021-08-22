@@ -11,13 +11,13 @@
   </head>
   <body>
     <header class="header">
-      <div class="container">
+      <div >
         <div class="header--content">
           <%= link_to image_tag("critic-logo.png"), root_path %>
 
           <input type="checkbox" id="open" class="menu-checkbox">
           <label for="open" class="menu-open"></label>
-          
+
           <% if user_signed_in? %>
             <nav class="menu">
               <div class="container">
@@ -43,7 +43,7 @@
         </div>
       </div>
     </header>
-    <body>
+    <section>
    <p class="notice"><%= notice %></p>
    <p class="alert"><%= alert %></p>
    <% if user_signed_in? %>
@@ -52,10 +52,10 @@
      <%= link_to 'Log in', new_user_session_path %>
      <%= link_to 'Sign up', new_user_registration_path %>
    <% end %>
-     <div class="container-yield">
+     <div class="container-yield mt-50">
       <%= yield %>
     </div>
-    </body>
+    </section>
     <footer>
       <div class="footer--container">
         <p class="footer--txt content--sm">© 2021 - Codeable Critics</p>

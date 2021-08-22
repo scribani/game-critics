@@ -1,0 +1,15 @@
+<%= render "company-header", company: @company %>
+
+<nav>
+  <ul>
+    <li><%= link_to 'Company Details', company_path(@company) %></li>
+    <li><%= link_to "Critics (#{@critics})", company_critics_path %></li>
+  </ul>
+</nav>
+
+
+<%= render 'critics/form_c', critic: @critic %>
+<%= render @company.critics %>
+
+
+<%= link_to 'Back', companies_path %>
