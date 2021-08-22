@@ -13,7 +13,7 @@
         <div class="card--detail-container">
           <div class="card--detail">
             <p class="content--lg"><%= company.name%></p>
-            <p class="content--xs mb-10 gray-300" ><%= company.start_date %> - <%= company.country %></p>
+            <p class="content--xs mb-10 gray-300" ><%= company.start_date.year %> - <%= company.country %></p>
             <div class="card--abbrv-description">
               <p class="content--xs mb-10"><%= company.description %></p>
             </div>
@@ -21,7 +21,7 @@
           
           <div class="card--icons-container">
             <div class="content--xs gray-300">
-              <p> '45667 Games</p>
+              <p> <%= company.games_count %> Games</p>
             </div>
             
             <div>

@@ -21,7 +21,7 @@
           </div>
           <div class = "content--xs card--content-text "> <%= game.summary %></div>
           <div class = "card--icons-container content--xs ">
-            <div> 2 critics </div>
+            <div> <p> <%= @critics.size %> critics </p> </div>
             <div class= "flex justify-end gap-8">
               <%= link_to image_tag('/icons/edit.svg'), edit_game_path(game), :class => "btn btn--only-icon btn--secondary btn--small btn--only-icon-width" %>
               <%= link_to image_tag('/icons/delete.png'), game_path(game), :class => "btn btn--only-icon btn--secondary btn--small btn--only-icon-width", method: :delete %>
