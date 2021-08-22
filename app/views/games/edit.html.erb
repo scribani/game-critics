@@ -1,4 +1,4 @@
-<h1>Edit game</h1>
+<h1 class = "heading--sm mb-16 mt-48" > Edit Game</h1>
 
 <% if @game.errors.size.positive? %>
   <div>
@@ -10,14 +10,13 @@
   </div>
 <% end %>
 <%= form_with model: @game do |form| %>
-  <div>
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-    
+  <div class = "mb-16">
+    <p class = "overline" ><%= form.label :name %> </p>
+    <%= form.text_field :name, class: " border-1-gray border-radius-6 input__container"%>
   </div>
-  <div>
-    <%= form.label :summary %>
-    <%= form.text_area :summary %>
+  <div class = "mb-16">
+    <p class = "overline" ><%= form.label :summary %></p>
+    <%= form.text_area :summary, class: " border-1-gray border-radius-6 input__container content--b ", rows: 20%>
   </div>
   <div>
     <%= form.label :release_date %>
@@ -32,11 +31,6 @@
     <%= form.select :category, [["Main game", "main_game"], ["Expansion", "expansion"]] %>
   </div>
 
-  <div>
-    <%= form.label :parent_id %>
-
-    <%# <%= form.collection_select :parent_id, @main_games, :id, :name, prompt: "No Parent" %> %>
-  </div>
   <div>
     <%= form.label :cover%>
     <%= form.file_field :cover %>

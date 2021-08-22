@@ -3,24 +3,24 @@
   <%= link_to "New Game", new_game_path, class:"btn btn--primary btn--small btn--new mb-16" %>
 
   <% @games.each do |game| %>
-    <div class = "card">
+    <div class = "card mb-16">
       <div class = "card--img" > <%= link_to (image_tag game.cover), game_path(game) %> </div>
       <div class = "card--detail-container">
-        <div class = "card">
-          <div class = "content--lg ">
-            <%= game.name %>
-            <%= game.release_date.year %>
+        <div class = "flex space-between align-center mb-10 ">
+          <div class = "content--lg  card--flex-column ">
+            <div class = "size--box-title"> <%= game.name %> </div>
+            <span class = "content--xs "><%= game.release_date.year %></span>
           </div>
-          <div>
+          <div class = " content--sm  bg-secondary-300 header--content-center white border-radius-4 size--box-rating">
             <%= game.rating %>
           </div>
         </div>
-        <div class = "content--xs card--content-text "> <%= game.summary %></div>
-        <div class = "card--icons-container content--xs ">
-          <div> <%=  %> </div>
-          <div class= "flex justify-end gap-8">
-            <%= link_to image_tag('/icons/edit.svg'), edit_game_path(game), :class => "btn btn--only-icon btn--secondary btn--small btn--only-icon-width" %>
-            <%= link_to image_tag('/icons/delete.png'), game_path(game), :class => "btn btn--only-icon btn--secondary btn--small btn--only-icon-width", method: :delete %>
+        <div class = "content--xs card--content-text mb-10  "> <%= game.summary %></div>
+        <div class = "card--icons-container content--xs pb-8">
+          <div class = " gray-300 "> <%= game.critics.size %> critics </div>
+          <div class= "flex justify-center align-center  gap-8">
+            <%= link_to image_tag('/icons/edit.png'), edit_game_path(game), :class => " flex justify-center align-center  " %>
+            <%= link_to image_tag('/icons/delete.png'), game_path(game), :class => "flex justify-center align-center ", method: :delete %>
           </div>
         </div>
       </div>

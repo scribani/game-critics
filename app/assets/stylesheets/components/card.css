@@ -11,13 +11,15 @@
   background-color: white;
 }
 
-.card--img img {
-  /* border: 2px solid blue; */
+.card--img {
   width: 120px;
   height: 160px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+}
+
+.card--img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .card--detail-container {
@@ -75,9 +77,4 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.card--flex-column {
-  display: flex;
-  flex-direction: column;
 }
