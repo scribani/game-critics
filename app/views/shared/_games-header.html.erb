@@ -1,17 +1,14 @@
-<div class= "card-img">
-  <%= image_tag(model.cover) if model.cover.attached? %>
+<div class="details__img">
+  <%= image_tag model.cover, class: "details__img--cover" if model.cover.attached? %>
 </div>
 
-<div>
-  <div class = "card--icons-container section--xs  ">
-    <div class = "card--flex-column">
-      <span class = "heading--sm"><%= model.name %></span>
-      <% if model.release_date %>
-        <span class = "content--xs"><%= model.release_date.year %></span>
-      <% end %>
-    </div>
-    <div class = "btn--card content--xl bg-secondary-300 header--content-center white">
-      <%= model.rating %>
-    </div>
+<div class="flex space-between">
+  <div>
+    <p class="heading--sm"><%= model.name %></p>
+    <p class="content--xs"><%= model.release_date.year if model.release_date %></p>
   </div>
+
+  <% if model.rating %>
+    <p class="rating-btn"><%= model.rating %></p>
+  <% end %>
 </div>

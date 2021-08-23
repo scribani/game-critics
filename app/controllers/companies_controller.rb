@@ -10,7 +10,8 @@ class CompaniesController < ApplicationController
     @company = Company.find(params[:id])
     authorize @company
 
-    @critics = @company.critics
+    @critics = policy_scope(@company.critics, policy_scope_class: CriticPolicy::Scope)
+
     render :show
   end
 
