@@ -1,12 +1,12 @@
 <%= render "shared/#{@criticable_type}-header", model: @criticable %>
 
-<nav>
-  <ul>
-    <li><%= link_to 'Model Details', @criticable %></li>
-    <li><%= "Critics (#{@critics.size})" %></li>
-  </ul>
-</nav>
+<ul class="details_navbar mb-16">
+  <li class="details_navbar__item"><%= link_to "#{@criticable_type[0..-2].capitalize} Details", @criticable %></li>
+  <li class="details_navbar__item details_navbar--selected"><%= link_to "Critics (#{@critics.size})", critics_path(criticable: @criticable_type, criticable_id: @criticable.id) %></li>
+</ul>
 
-<%= render 'shared/criticable_form', criticable_type: @criticable_type, criticable_id: @criticable.id %>
+<%= render 'shared/criticable_form', critics: @critics, criticable_type: @criticable_type, criticable_id: @criticable.id %>
 
-<%= link_to 'Back', root_path %>
+<div class="text-center">
+  <%= link_to "Back", :back, class: "anchor" %>
+</div>

@@ -1,52 +1,72 @@
-<% if game.errors.size.positive? %>
-  <div>
-    <ul>
-      <% game.errors.full_messages.each do |message| %>
-        <li><%= message %> </li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-<h1 class = "heading--sm mb-16 mt-48" > New Game</h1>
-<%= form_with model: @game do |form| %>
-<div class = "mb-16">
-  <p class = "overline" ><%= form.label :name %></p>
-  <%= form.text_field :name, class: " border-1-gray border-radius-6 input__container", placeholder: "Secret planning"%> 
-</div>
-  
-  <div class = "mb-16">
-    <p class = "overline" ><%= form.label :summary %></p>
-      <%= form.text_area :summary, class: " border-1-gray border-radius-6 input__container", placeholder: "This is the best department yet..." %>
+<%= form_with model: @game, class: "form" do |form| %>
+  <div class="input mb-16">
+    <%= form.label :name, class: "content--xs overline" %>
+    <div class="input__container">
+      <%= form.text_field :name, placeholder: "Game title", class: "input__content" %>
     </div>
-  <div>
-
-  <div class = "mb-16">
-    <p class = "overline" ><%= form.label :release_date %></p>  
-    <%= form.date_field :release_date, class: " border-1-gray border-radius-6 input__container", placeholder: "dd/mm/yyyy" %>
+    <% if game.errors.messages[:name].any? %>
+      <span class="content--sm input__error-message"><%= game.errors.messages[:name].join(", ")%></span>
+    <% end %>
   </div>
   
-  <div class = "mb-16">
-    <p class = "overline" ><%= form.label :rating %></p> 
-      <%= form.number_field :rating, in: 0.0..100.0, step: 0.1, class: " border-1-gray border-radius-6 input__container", placeholder: "0.0" %>
-  </div>
+  <div class="input mb-16">
+    <%= form.label :summary, class: "content--xs overline" %>
+    <div class="input__container">
+      <%= form.text_area :summary, class: "input__content", placeholder: "About the game..." %>
+    </div>
+    <% if game.errors.messages[:summary].any? %>
+      <span class="content--sm input__error-message"><%= game.errors.messages[:summary].join(", ")%></span>
+    <% end %>
+  <div>
 
-  <div class = "mb-16">
-    <p class = "overline" ><%= form.label :category %></p> 
-    <%= form.select :category, options_for_select([["Main game", "main_game"], ["Expansion", "expansion"]]), {class: 'prueba'} %>
-  </div>
-
-  <div class = "mb-16">
-    <p class = "overline" ><%= form.label :parent_id %></p>
-    <%= form.collection_select :parent_id, @main_games, :id, :name, prompt: "Select one game" %>
+  <div class="input mb-16">
+    <%= form.label :release_date, class: "content--xs overline" %>
+    <div class="input__container">
+      <%= form.date_field :release_date, class: "input__content", placeholder: "dd/mm/yyyy" %>
+    </div>
+    <% if game.errors.messages[:release_date].any? %>
+      <span class="content--sm input__error-message"><%= game.errors.messages[:release_date].join(", ")%></span>
+    <% end %>
   </div>
   
-  <div class = "mb-16">
-    <p class = "overline" ><%= form.label :cover %></p> 
-    <%= form.file_field :cover, :class => "content--xs overline transform" %>
+  <div class="input mb-16">
+    <%= form.label :rating, class: "content--xs overline" %>
+    <div class="input__container">
+      <%= form.number_field :rating, in: 0.0..100.0, step: 0.1, class: "input__content", placeholder: "0.0" %>
+    </div>
+    <% if game.errors.messages[:rating].any? %>
+      <span class="content--sm input__error-message"><%= game.errors.messages[:rating].join(", ")%></span>
+    <% end %>
   </div>
 
-  <%= form.submit "Create Game", :class => "btn btn--secondary border-radius-4 btn--medium btn--margin bg-primary-300 " %>
-  <div>
-    <%= link_to 'Back', games_path(@game) %>
+  <div class="select mb-16">
+    <%= form.label :category, class: "content--xs overline" %>
+    <%= form.select :category, options_for_select([["Main game", "main_game"], ["Expansion", "expansion"]]), class: "select__input" %>
+    <% if game.errors.messages[:category].any? %>
+      <span class="content--sm input__error-message"><%= game.errors.messages[:category].join(", ")%></span>
+    <% end %>
   </div>
+
+  <div class="select mb-16">
+    <%= form.label :parent_id, class: "content--xs overline" %>
+    <%= form.collection_select :parent_id, @main_games, :id, :name, prompt: "No Parent", class: "select__input" %>
+    <% if game.errors.messages[:parent_id].any? %>
+      <span class="content--sm input__error-message"><%= game.errors.messages[:parent_id].join(", ")%></span>
+    <% end %>
+  </div>
+  
+  <div class="input mb-16">
+    <%= form.label :cover, class: "content--xs overline" %>
+    <%= image_tag game.cover, class: "form__img" if game.cover.attached? %>
+    <%= form.file_field :cover, class: "input__content" %>
+    <% if game.errors.messages[:cover].any? %>
+      <span class="content--sm input__error-message"><%= game.errors.messages[:cover].join(", ")%></span>
+    <% end %>
+  </div>
+
+  <%= form.submit class: "btn btn--primary mb-16" %>
 <% end %>
+
+<div class="text-center">
+  <%= link_to "Back", :back, class: "anchor" %>
+</div>

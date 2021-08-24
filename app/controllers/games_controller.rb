@@ -22,7 +22,7 @@ class GamesController < ApplicationController
     @genres = @game.genres
     @platforms = @game.platforms
 
-    @critics = @game.critics
+    @critics = policy_scope(@game.critics, policy_scope_class: CriticPolicy::Scope)
 
     show_pub_dev
   end

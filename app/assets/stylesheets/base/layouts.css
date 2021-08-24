@@ -8,9 +8,16 @@
   padding: 16px 0px;
 }
 .container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   margin: auto;
   padding: 0px 32px;
   max-width: 1280px;
+}
+
+.absolute {
+  position: absolute;
 }
 
 .m-auto {
@@ -33,40 +40,40 @@
   gap: 32px;
 }
 
-.flex {
-  display: flex;
+.gap-16 {
+  gap: 16px;
 }
 
-.justify-end {
-  justify-content: flex-end;
-}
-
-.justify-center {
-  justify-content: center;
-}
-
-.space-between {
-  justify-content: space-between;
+.gap-12 {
+  gap: 12px;
 }
 
 .gap-8 {
   gap: 8px;
 }
 
-.gap-12 {
-  gap: 8px;
+.gap-4 {
+  gap: 4px;
 }
 
-.gap-16 {
-  gap: 16px;
+.flex {
+  display: flex;
 }
 
-.text-center{
-  text-align: center;
+.space-between {
+  justify-content: space-between;
+}
+
+.justify-right {
+  justify-content: right;
 }
 
 .align-center {
   align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
 }
 
 .shadow {
@@ -92,8 +99,4 @@
   .grid--3col {
     grid-template-columns: 1fr;
   }
-}
-
-.display-inline-block {
-  display: inline-block;
 }

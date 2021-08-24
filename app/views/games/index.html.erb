@@ -1,36 +1,54 @@
-<div class = "container">
-  <h1 class = "heading--sm mb-16" >Games</h1>
-  <%= link_to "New Game", new_game_path, class:"btn btn--primary btn--small btn--new mb-16" %>
+<h2 class="heading--sm">Games</h2>
 
-  <% @games.each do |game| %>
-    <div class = "card mb-16">
-      <div class = "card--img" > <%= link_to (image_tag game.cover), game_path(game) %> </div>
-      <div class = "card--detail-container">
-        <div class = "card">
-          <div class = "content--lg card--flex-column">
-            <div class = "size--box-title"><%= game.name %></div>
+<%= link_to "New Game", new_game_path, class:"btn btn--primary btn--small" if policy(@games.first).create? %>
+
+<% @games.each do |game| %>
+  <div class="card">
+    <%= link_to game do %>
+      <div class="card__img">
+        <%= image_tag game.cover, class: "card__img--cover" %>
+      </div>
+    <% end %>
+
+    <div class="card__details">
+      <%= link_to game do %>
+        <div class="flex space-between">
+          <div>
+            <p class="content--lg"><%= game.name %></p>
             <% if game.release_date %>
-              <span class = "content--xs "> <%= game.release_date.year %> </span>
+              <p class="content--xs"><%= game.release_date.year %></p>
             <% end %>
           </div>
-          <div class = " content--sm  bg-secondary-300 header--content-center white border-radius-4 size--box-rating">
-            <%= game.rating %>
-          </div>
+
+          <% if game.rating %>
+            <p class="rating-btn"><%= game.rating %></p>
+          <% end %>
         </div>
-        <div class = "content--xs card--content-text "> <%= game.summary %></div>
-        <div class = "card--icons-container content--xs pb-8 ">
-          <div class = " gray-300 "> <%= game.critics.size %> critics </div>
-          <div class= "flex justify-center align-center  gap-8">
-            <%= link_to image_tag('/icons/edit.png'), edit_game_path(game), :class => "flex justify-center align-center" %>
-            <%= link_to image_tag('/icons/delete.png'), game_path(game), :class => "flex justify-center align-center", method: :delete, data: { confirm: "Are you sure?" } %>
-          </div>
+      <% end %>
+
+      <%= link_to game do %>
+        <p class="card__body content--xs">
+          <%= game.summary %>
+        </p>
+      <% end %>
+
+      <div class="flex space-between">
+        <%= link_to game do %>
+          <p class="content--xs">
+            <%= pluralize(game.critics.size, "critic") %>
+          </p>
+        <% end %>
+
+        <div class="flex gap-8">
+          <%= link_to image_tag('/icons/edit.png'), edit_game_path(game), class: "content--xs" if policy(game).edit? %>
+          <%= link_to image_tag('/icons/delete.png'), game_path(game), method: :delete, data: { confirm: "Are you sure?" }, class: "content--xs" if policy(game).destroy? %>
         </div>
       </div>
     </div>
-  <% end %>
-
-  <%= paginate @games %>
-  <div class="content--xs">
-    <%= page_entries_info @games, entry_name: 'game' %>
   </div>
+<% end %>
+
+<div class="text-center content--xs">
+  <%= paginate @games %>
+  <%= page_entries_info @games, entry_name: 'game' %>
 </div>

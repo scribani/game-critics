@@ -12,8 +12,6 @@ Rails.application.routes.draw do
   delete "games/:id/platform/:id", to: "games#remove_platform", as: :remove_platform
   delete "games/:id/genre/:id", to: "games#remove_genre", as: :remove_genre
 
-  resources :remove_publisher, :remove_developer, :remove_platform, :remove_genre
-
   # Routes for devise
   devise_for :users, controllers: {
     omniauth_callbacks: "callbacks",
@@ -31,4 +29,6 @@ Rails.application.routes.draw do
 
   get "/:criticable/:criticable_id/critics", to: "critics#index", as: :critics
   post "/:criticable/:criticable_id/critics", to: "critics#create"
+  patch "/:criticable/:criticable_id/critics/:critic_id", to: "critics#update"
+  delete "/:criticable/:criticable_id/critics/:critic_id", to: "critics#destroy"
 end

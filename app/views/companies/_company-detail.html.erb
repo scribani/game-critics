@@ -1,36 +1,49 @@
-<div class="show-details">
-  <p class="content--xs mb-16 txt"><%= @company.description%></p>
+<p class="content--xs text-center"><%= company.description %></p>
 
-  <% if @company.games_count.positive? %>
-    <h3 class="heading--xs mb-16"> Games (<%= @company.games_count %>) </h3>
-  <% end %>
+<h3 class="heading--xs">Games (<%= @company.games_count %>)</h3>
 
-  <div>
-    <% @company.games.each do |game| %>
-      <div class = "card mb-16">
-        <div class = "card--img" > <%= link_to (image_tag game.cover), game_path(game) %> </div>
-        <div class = "card--detail-container">
-          <div class = "card">
-            <div class = "content--lg ">
-              <%= game.name %>
-              <%= game.release_date.year %>
-            </div>
-            <div>
-              <%= game.rating %>
-            </div>
-          </div>
-          <div class = "content--xs card--content-text "> <%= game.summary %></div>
-          <div class = "card--icons-container content--xs ">
-            <div> <p> <%= @critics.size %> critics </p> </div>
-            <div class= "flex justify-end gap-8">
-              <%= link_to image_tag('/icons/edit.svg'), edit_game_path(game), :class => "btn btn--only-icon btn--secondary btn--small btn--only-icon-width" %>
-              <%= link_to image_tag('/icons/delete.png'), game_path(game), :class => "btn btn--only-icon btn--secondary btn--small btn--only-icon-width", method: :delete %>
-            </div>
-          </div>
-        </div>
+<% @company.games.each do |game| %>
+  <div class="card">
+    <%= link_to game do %>
+      <div class="card__img">
+        <%= image_tag game.cover, class: "card__img--cover" %>
       </div>
     <% end %>
+
+    <div class="card__details">
+      <%= link_to game do %>
+        <div class="flex space-between">
+          <div>
+            <p class="content--lg"><%= game.name %></p>
+            <% if game.release_date %>
+              <p class="content--xs"><%= game.release_date.year %></p>
+            <% end %>
+          </div>
+
+          <% if game.rating %>
+            <p class="rating-btn"><%= game.rating %></p>
+          <% end %>
+        </div>
+      <% end %>
+
+      <%= link_to game do %>
+        <p class="card__body content--xs">
+          <%= game.summary %>
+        </p>
+      <% end %>
+
+      <div class="flex space-between">
+        <%= link_to game do %>
+          <p class="content--xs">
+            <%= pluralize(game.critics.size, "critic") %>
+          </p>
+        <% end %>
+
+        <div class="flex gap-8">
+          <%= link_to image_tag('/icons/edit.png'), edit_game_path(game), class: "content--xs" if policy(game).edit? %>
+          <%= link_to image_tag('/icons/delete.png'), game_path(game), method: :delete, data: { confirm: "Are you sure?" }, class: "content--xs" if policy(game).destroy? %>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
-
-
+<% end %>

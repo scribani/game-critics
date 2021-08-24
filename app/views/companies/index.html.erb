@@ -1,50 +1,50 @@
-<h2 class="heading--sm mb-16">Companies</h2>
+<h2 class="heading--sm">Companies</h2>
 
-<%= link_to 'New Company', new_company_path, class:"btn btn--primary btn--small btn--new mb-16" %>
+<%= link_to 'New Company', new_company_path, class:"btn btn--primary btn--small" if policy(@companies.first).create? %>
 
-<div>
-  <% @companies.each do |company| %>
-    <%= link_to company_path(company) do %>
-      <div class="card mb-16">
-        <div class="card--img">
-          <%= image_tag(company.cover) if company.cover.attached? %>
-        </div>
-
-        <div class="card--detail-container">
-          <div class="card--detail">
-            <p class="content--lg"><%= company.name%></p>
-            <p class="content--xs mb-10 gray-300" ><%= company.start_date.year %> - <%= company.country %></p>
-            <div class="card--abbrv-description">
-              <p class="content--xs mb-10"><%= company.description %></p>
-            </div>
-          </div>
-          
-          <div class="card--icons-container">
-            <div class="content--xs gray-300">
-              <p> <%= company.games_count %> Games</p>
-            </div>
-            
-            <div>
-              <%= link_to edit_company_path(company) do %>
-                <svg width="11.33" height="11.33" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5.33341 2.33334H2.00008C1.2637 2.33334 0.666748 2.93029 0.666748 3.66667V11C0.666748 11.7364 1.2637 12.3333 2.00008 12.3333H9.33341C10.0698 12.3333 10.6667 11.7364 10.6667 11V7.66667M9.72394 1.39052C10.2446 0.869825 11.0889 0.869825 11.6096 1.39052C12.1303 1.91122 12.1303 2.75544 11.6096 3.27614L5.8857 9H4.00008L4.00008 7.11438L9.72394 1.39052Z" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              <% end %>
-
-              <%= link_to company_path(company), method: :delete, data: { confirm: 'Are you sure?' } do %>
-                <svg width="10.67" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M13.8333 3.83333L13.1106 13.9521C13.0483 14.8243 12.3225 15.5 11.4481 15.5H4.55187C3.67747 15.5 2.95173 14.8243 2.88944 13.9521L2.16667 3.83333M6.33334 7.16667V12.1667M9.66667 7.16667V12.1667M10.5 3.83333V1.33333C10.5 0.873096 10.1269 0.5 9.66667 0.5H6.33334C5.8731 0.5 5.5 0.873096 5.5 1.33333V3.83333M1.33334 3.83333H14.6667" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              <% end %>
-            </div>
-          </div>
-        </div>
+<% @companies.each do |company| %>
+  <div class="card">
+    <%= link_to company do %>
+      <div class="card__img">
+        <%= image_tag company.cover, class: "card__img--cover" %>
       </div>
     <% end %>
-  <% end %>
-</div>
 
-<%= paginate @companies %>
-<div class="content--xs">
-  <%= page_entries_info @companies, entry_name: 'game' %>
+    <div class="card__details">
+      <%= link_to company do %>
+        <div>
+          <p class="content--lg"><%= company.name %></p>
+          <p class="content--xs">
+            <%= company.start_date.year if company.start_date %> 
+            - 
+            <%= company.country %>
+          </p>
+        </div>
+      <% end %>
+
+      <%= link_to company do %>
+        <p class="card__body content--xs">
+          <%= company.description %>
+        </p>
+      <% end %>
+
+      <div class="flex space-between">
+        <%= link_to company do %>
+          <p class="content--xs">
+            <%= pluralize(company.critics.size, "critic") %>
+          </p>
+        <% end %>
+
+        <div class="flex gap-8">
+          <%= link_to image_tag('/icons/edit.png'), edit_company_path(company), class: "content--xs" if policy(company).edit? %>
+          <%= link_to image_tag('/icons/delete.png'), company_path(company), method: :delete, data: { confirm: "Are you sure?" }, class: "content--xs" if policy(company).destroy? %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<div class="text-center content--xs">
+  <%= paginate @companies %>
+  <%= page_entries_info @companies, entry_name: 'company' %>
 </div>

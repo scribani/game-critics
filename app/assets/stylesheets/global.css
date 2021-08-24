@@ -1,3 +1,5 @@
-@import url("./base/color.css");
-@import url("./base/typography.css");
-@import url("./base/util.css");
+@import "./base/reset.css";
+@import "./base/colors.css";
+@import "./base/typography.css";
+@import "./base/layouts.css";
+@import "./base/util.css";

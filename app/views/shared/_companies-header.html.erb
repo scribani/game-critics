@@ -1,7 +1,14 @@
-<div>
+<div class="details__img">
+  <%= image_tag model.cover, class: "details__img--cover" if model.cover.attached? %>
+</div>
+
+<div class="flex space-between">
   <div>
-    <%= image_tag(model.cover) if model.cover.attached? %>
+    <p class="heading--sm"><%= model.name %></p>
+    <p class="content--xs">
+      <%= model.start_date.year if model.start_date %> 
+      - 
+      <%= model.country %>
+    </p>
   </div>
-  <p><%= model.name%></p>
-  <p><%= model.start_date %> - <%= model.country %></p>
 </div>

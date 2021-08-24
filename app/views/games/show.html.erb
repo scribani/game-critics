@@ -1,90 +1,18 @@
 <%= render "shared/games-header", model: @game %>
 
-<nav>
-  <ul>
-    <li><%= link_to 'Game Details', game_path(@game) %></li>
-    <li><%= link_to "Critics (#{@critics.size})", critics_path(criticable: "games", criticable_id: @game.id) %></li>
-  </ul>
-</nav>
+<ul class="details_navbar mb-16">
+  <li class="details_navbar__item details_navbar--selected"><%= link_to 'Game Details', game_path(@game) %></li>
+  <li class="details_navbar__item"><%= link_to "Critics (#{@critics.size})", critics_path(criticable: "games", criticable_id: @game.id) %></li>
+</ul>
 
-<div>
-  <div class = "content--xs text--justify font-inter pb-16"> <%= @game.summary %></div>
+<%= render("game-detail",
+  game: @game,
+  genres: @genres,
+  platforms: @platforms,
+  developers: @developers,
+  publishers: @publishers
+) %>
 
-  <div>
-    <div>
-      <strong class = "content--sm gray-400">Genres: </strong>
-      <div class = " footer--social-container ">
-        <% @genres.each do |genre| %>
-          <div class = "content--xs bg-secondary-200 white btn-relations">
-            <%= genre.name %>
-            <span><%= link_to image_tag('/icons/cross.png'), remove_genre_path(@game, genre_id: genre), method: :delete %></span>
-          </div>
-        <% end %>
-      </div>
-    </div>
-
-    <div>
-      <strong>Platforms: </strong>
-      <% @platforms.each do |platform| %>
-        <div>
-          <%= platform.name %>
-          <%= link_to image_tag('/icons/cross.png'), remove_platform_path(@game, platform_id: platform), method: :delete %>
-        </div>
-      <% end %>
-    </div>
-
-    <div>
-      <strong>Developer: </strong>
-      <% @developers.each do |developer| %>
-        <div>
-          <span><%= developer.name %></span>
-          <%= link_to image_tag('/icons/cross.png'), remove_developer_path(@game, developer_id: developer), method: :delete %>
-        </div>
-      <% end %>
-    </div>
-
-    <div>
-      <strong>Publisher: </strong>
-      <% @publishers.each do |publisher| %>
-        <div>
-          <span><%= publisher.name %></span>
-          <%= link_to image_tag('/icons/cross.png'), remove_publisher_path(@game, publisher_id: publisher), method: :delete %>
-        </div>
-      <% end %>
-    </div>
-  </div>
-
-  <div>
-    <h2>Add Relations</h2>
-
-    <%= form_with url: add_genres_path(@game)  do |form| %>
-      <div>
-        <%= form.collection_select :id_genre,(Genre.all - @game.genres), :id, :name, prompt: "Select genre" %>
-      </div>
-      <%= form.submit "Add Genre" %>
-    <% end %>
-    
-    <%= form_with url: add_platforms_path(@game) do |form| %>
-      <div>
-        <%= form.collection_select :id_platform,(Platform.all - @game.platforms), :id, :name, prompt: "Select platform" %>
-      </div>
-      <%= form.submit "Add Platform" %>
-    <% end %>
-
-    <%= form_with url: "/games/#{@game.id}/developer" do |form| %>
-      <div>
-        <%= form.collection_select :develop_id, @developers_list, :id, :name, prompt: "Select developer" %>
-      </div>
-      <%= form.submit "Add Developer" %>
-    <% end %>
-
-    <%= form_with url: "/games/#{@game.id}/publisher" do |form| %>
-      <div>
-        <%= form.collection_select :publisher_id, @publishers_list, :id, :name, prompt: "Select publisher" %>
-      </div>
-      <%= form.submit "Add Publisher" %>
-    <% end %>
-  </div>
+<div class="text-center">
+  <%= link_to "Back", :back, class: "anchor" %>
 </div>
-
-<%= link_to "Back", games_path %> 

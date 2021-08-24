@@ -1,59 +1,56 @@
-<% if company.errors.size.positive? %>
-  <div>
-    <ul>
-      <% company.errors.full_messages.each do |message| %>
-        <li><%= message %> </li>
-      <% end %>
-    </ul>
+<%= form_with model: company, class: "form" do |form| %>
+  <div class="input mb-16">
+    <%= form.label :name, class: "content--xs overline" %>
+    <div class="input__container">
+      <%= form.text_field :name, placeholder: "Company SA", class: "input__content" %>
+    </div>
+    <% if company.errors.messages[:name].any? %>
+      <span class="content--sm input__error-message"><%= company.errors.messages[:name].join(", ")%></span>
+    <% end %>
   </div>
+
+  <div class="input mb-16">
+    <%= form.label :description, class: "content--xs overline" %>
+    <div class="input__container">
+      <%= form.text_area :description, placeholder: "About the company...", class: "input__content" %>
+    </div>
+    <% if company.errors.messages[:description].any? %>
+      <span class="content--sm input__error-message"><%= company.errors.messages[:description].join(", ")%></span>
+    <% end %>
+  </div>
+
+  <div class="input mb-16">
+    <%= form.label :start_date, class: "content--xs overline" %>
+    <div class="input__container">
+      <%= form.date_field :start_date, placeholder: "dd/mm/yyyy", class: "input__content" %>
+    </div>
+    <% if company.errors.messages[:start_date].any? %>
+      <span class="content--sm input__error-message"><%= company.errors.messages[:start_date].join(", ")%></span>
+    <% end %>
+  </div>
+
+  <div class="input mb-16">
+    <%= form.label :country, class: "content--xs overline" %>
+    <div class="input__container">
+      <%= form.text_field :country, placeholder: "Somewhere", class: "input__content" %>
+    </div>
+    <% if company.errors.messages[:country].any? %>
+      <span class="content--sm input__error-message"><%= company.errors.messages[:country].join(", ")%></span>
+    <% end %>
+  </div>
+
+  <div class="input mb-16">
+    <%= form.label :cover, class: "content--xs overline" %>
+    <%= image_tag company.cover, class: "form__img" if company.cover.attached? %>
+    <%= form.file_field :cover, class: "input__content" %>
+    <% if company.errors.messages[:cover].any? %>
+      <span class="content--sm input__error-message"><%= company.errors.messages[:cover].join(", ")%></span>
+    <% end %>
+  </div>
+
+  <%= form.submit class: "btn btn--primary" %>
 <% end %>
 
-<%= form_with model: company do |form| %>
-
-  <div>
-    <div>
-      <%= form.label :name %>
-    </div>
-    <div>
-      <%= form.text_field :name, placeholder: "Company SA" %>
-    </div>
-  </div>
-
-  <div>
-    <div>
-      <%= form.label :description %>
-    </div>
-    <div>
-      <%= form.text_area :description, placeholder: "About the company..." %>
-    </div>
-  </div>
-
-  <div>
-    <div>
-      <%= form.label :start_date %>
-    </div>
-    <div>
-      <%= form.date_field :start_date, placeholder: "dd/mm/yyyy" %>
-    </div>
-  </div>
-
-  <div>
-    <div>
-      <%= form.label :country %>
-    </div>
-    <div>
-      <%= form.text_field :country, placeholder: "Somewhere" %>
-    </div>
-  </div>
-
-  <div>
-    <div>
-      <%= form.label :cover %>
-    </div>
-    <div>
-      <%= form.file_field :cover %>
-    </div>
-  </div>
-
-  <%= form.submit %>
-<% end %>
+<div class="text-center">
+  <%= link_to "Back", :back, class: "anchor" %>
+</div>
