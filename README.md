@@ -1,24 +1,23 @@
-# README
+# Game critics
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+<p align="center">
+  <img src="https://github.com/scribani/game-critics/blob/main/app/assets/images/critic-logo.png?raw=true" alt="logo" width="200px">
+</p>
 
-Things you may want to cover:
+Videogame review platform where companies and their games could receive some critics from registered users.
 
-* Ruby version
+## Features
 
-* System dependencies
+- Create your account or login using email, GitHub or GitLab
+- Reset your password in case you forgot it
+- Edit your profile data
+- Discover games, leave a critic for everyone to see, and read other critics
 
-* Configuration
+## Built With
 
-* Database creation
+- Ruby on Rails
+- Devise gem for Authentication
+- Omniauth gem for OAuth Authentication with GitHub and GitLab
+- Pundit gem for Authorization
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Figma design this project is based on, can be found [here](https://www.figma.com/file/d5h7aouzicyQWlYGn1cIsd/C4-Critics-Beta?node-id=888%3A708)
